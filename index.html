@@ -4,268 +4,236 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>PSIMAG Industrial S.A.C. — Ingeniería y Gestión de Activos</title>
-<meta name="description" content="PSIMAG Industrial S.A.C.: levantamiento de información técnica, taxonomía SAP ISO 14224, diseño CAD (P&ID, PFD, isométricos) y gestión de activos para la industria peruana. Empresa homologada Bureau Veritas.">
+<meta name="description" content="PSIMAG Industrial S.A.C.: levantamiento de información técnica, taxonomía SAP ISO 14224, diseño CAD y gestión de activos para la industria peruana. Homologada Bureau Veritas.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Inter:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 
   :root{
-    --paper:#EDF1F3;
-    --card:#FFFFFF;
-    --ink:#0C1922;
-    --ink-2:#20323D;
-    --teal:#00929E;
-    --teal-dk:#016B76;
-    --teal-lt:#E1F1F2;
-    --amber:#E39A1C;
-    --muted:#5F7683;
-    --muted-2:#8A9AA4;
-    --line:rgba(12,25,34,.10);
-    --line-2:rgba(12,25,34,.06);
+    --navy:#000028;        /* fondo principal Siemens */
+    --navy-2:#001E3C;      /* paneles */
+    --navy-3:#0A2F52;      /* hover / bordes */
+    --petrol:#00FFB9;      /* verde petróleo brillante (acento) */
+    --petrol-dk:#00CC95;
+    --teal:#009999;
+    --sky:#4DA8C8;
+    --text:#EAF1F6;
+    --muted:#8FA3B8;
+    --muted-2:#5E7186;
+    --line:rgba(255,255,255,.12);
+    --line-2:rgba(255,255,255,.07);
   }
 
   html{scroll-behavior:smooth;}
   body{
     font-family:'Inter',sans-serif;
-    background:var(--paper);
-    color:var(--ink);
+    background:var(--navy);
+    color:var(--text);
     line-height:1.6;
     -webkit-font-smoothing:antialiased;
     overflow-x:hidden;
   }
-  a{color:inherit;}
-  ::selection{background:var(--teal);color:#fff;}
-
-  .wrap{max-width:1200px;margin:0 auto;padding:0 32px;}
-
+  a{color:inherit;text-decoration:none;}
+  ::selection{background:var(--petrol);color:var(--navy);}
+  .wrap{max-width:1240px;margin:0 auto;padding:0 40px;}
   .mono{font-family:'IBM Plex Mono',monospace;}
-  .eyebrow{
-    font-family:'IBM Plex Mono',monospace;
-    font-size:.7rem;letter-spacing:.24em;text-transform:uppercase;
-    color:var(--teal-dk);
-    display:inline-flex;align-items:center;gap:10px;
-  }
-  .eyebrow::before{content:'';width:26px;height:1px;background:var(--teal);}
+  h1,h2,h3,h4{font-family:'Archivo',sans-serif;line-height:1.06;letter-spacing:-.015em;font-weight:700;}
 
-  h1,h2,h3,h4{font-family:'Archivo',sans-serif;line-height:1.08;letter-spacing:-.01em;}
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.22em;
+    text-transform:uppercase;color:var(--petrol);
+    display:inline-flex;align-items:center;gap:12px;
+  }
+  .eyebrow::before{content:'';width:28px;height:2px;background:var(--petrol);}
 
   /* ═══ NAV ═══ */
-  header.nav{
-    position:sticky;top:0;z-index:100;
-    background:rgba(237,241,243,.85);
-    backdrop-filter:blur(12px);
-    border-bottom:1px solid var(--line);
-  }
-  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:72px;}
-  .brand{display:flex;align-items:center;gap:13px;text-decoration:none;}
-  .brand svg{width:40px;height:40px;flex-shrink:0;}
-  .brand-name{font-family:'Archivo',sans-serif;font-weight:800;font-size:1.28rem;letter-spacing:.02em;color:var(--ink);line-height:1;}
-  .brand-name small{display:block;font-family:'IBM Plex Mono',monospace;font-weight:400;font-size:.56rem;letter-spacing:.26em;color:var(--teal-dk);margin-top:4px;}
-  .nav-links{display:flex;align-items:center;gap:34px;list-style:none;}
-  .nav-links a{text-decoration:none;font-size:.86rem;font-weight:500;color:var(--ink-2);transition:color .18s;}
-  .nav-links a:hover{color:var(--teal);}
-  .nav-btn{
-    background:var(--ink);color:#fff !important;
-    padding:11px 22px;border-radius:3px;font-weight:600 !important;font-size:.84rem !important;
-    transition:background .2s;
-  }
-  .nav-btn:hover{background:var(--teal);}
+  header.nav{position:sticky;top:0;z-index:100;background:rgba(0,0,40,.82);backdrop-filter:blur(14px);border-bottom:1px solid var(--line-2);}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:76px;}
+  .brand{display:flex;align-items:center;gap:14px;}
+  .brand svg{width:42px;height:42px;flex-shrink:0;}
+  .brand-name{font-family:'Archivo',sans-serif;font-weight:800;font-size:1.32rem;letter-spacing:.03em;color:#fff;line-height:1;}
+  .brand-name small{display:block;font-family:'IBM Plex Mono',monospace;font-weight:400;font-size:.56rem;letter-spacing:.28em;color:var(--petrol);margin-top:5px;}
+  .nav-links{display:flex;align-items:center;gap:36px;list-style:none;}
+  .nav-links a{font-size:.9rem;font-weight:500;color:var(--muted);transition:color .18s;}
+  .nav-links a:hover{color:#fff;}
+  .nav-btn{background:var(--petrol);color:var(--navy) !important;padding:12px 24px;font-weight:600 !important;transition:background .2s;}
+  .nav-btn:hover{background:#fff;}
   .burger{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:5px;}
-  .burger span{width:24px;height:2px;background:var(--ink);display:block;}
+  .burger span{width:26px;height:2px;background:#fff;display:block;}
 
   /* ═══ HERO ═══ */
-  .hero{position:relative;padding:88px 0 96px;overflow:hidden;}
-  .hero::before{
-    content:'';position:absolute;inset:0;z-index:0;
-    background-image:
-      linear-gradient(var(--line-2) 1px,transparent 1px),
-      linear-gradient(90deg,var(--line-2) 1px,transparent 1px);
-    background-size:52px 52px;
-    -webkit-mask-image:radial-gradient(ellipse 90% 80% at 70% 30%,#000 30%,transparent 75%);
-    mask-image:radial-gradient(ellipse 90% 80% at 70% 30%,#000 30%,transparent 75%);
+  .hero{position:relative;min-height:90vh;display:flex;align-items:center;overflow:hidden;
+    background:
+      radial-gradient(120% 90% at 88% 10%, rgba(0,153,153,.22), transparent 55%),
+      linear-gradient(120deg, #000028 0%, #001E3C 55%, #002845 100%);
   }
-  .hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.08fr .92fr;gap:56px;align-items:center;}
-  .hero h1{font-size:clamp(2.6rem,5.2vw,4.3rem);font-weight:800;color:var(--ink);margin:22px 0 24px;}
-  .hero h1 .t{color:var(--teal);}
-  .hero .lead{font-size:1.08rem;color:var(--muted);max-width:540px;font-weight:400;}
-  .hero .lead b{color:var(--ink-2);font-weight:600;}
-  .hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:34px;}
-  .btn{
-    display:inline-flex;align-items:center;gap:9px;text-decoration:none;
-    font-weight:600;font-size:.92rem;padding:15px 28px;border-radius:3px;
-    transition:transform .15s,background .2s,box-shadow .2s;cursor:pointer;border:none;
+  .hero-photo{
+    position:absolute;inset:0;z-index:0;opacity:.34;
+    background-image:url('https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1920&q=70');
+    background-size:cover;background-position:center;
+    -webkit-mask-image:linear-gradient(100deg,transparent 0%,transparent 34%,#000 100%);
+    mask-image:linear-gradient(100deg,transparent 0%,transparent 34%,#000 100%);
   }
-  .btn-primary{background:var(--teal);color:#fff;box-shadow:0 6px 22px -8px rgba(0,146,158,.7);}
-  .btn-primary:hover{background:var(--teal-dk);transform:translateY(-2px);}
-  .btn-outline{background:transparent;color:var(--ink);border:1px solid var(--line);}
-  .btn-outline:hover{border-color:var(--teal);color:var(--teal);}
-  .hero-meta{display:flex;gap:34px;margin-top:52px;padding-top:30px;border-top:1px solid var(--line);}
-  .hm-num{font-family:'Archivo',sans-serif;font-weight:800;font-size:1.9rem;color:var(--ink);line-height:1;}
-  .hm-lbl{font-family:'IBM Plex Mono',monospace;font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-2);margin-top:7px;}
+  .hero::after{content:'';position:absolute;inset:0;z-index:1;
+    background:linear-gradient(90deg, var(--navy) 6%, rgba(0,0,40,.6) 42%, transparent 72%);}
+  .hero-grid{position:relative;z-index:2;display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;width:100%;padding:70px 0;}
+  .hero h1{font-size:clamp(2.8rem,6vw,5rem);font-weight:800;color:#fff;margin:26px 0 26px;}
+  .hero h1 .t{color:var(--petrol);}
+  .hero .lead{font-size:1.14rem;color:#C4D2DE;max-width:560px;font-weight:300;}
+  .hero .lead b{color:#fff;font-weight:600;}
+  .hero-actions{display:flex;gap:16px;flex-wrap:wrap;margin-top:38px;}
+  .btn{display:inline-flex;align-items:center;gap:10px;font-weight:600;font-size:.98rem;padding:17px 34px;cursor:pointer;border:none;transition:transform .15s,background .2s,color .2s;}
+  .btn-primary{background:var(--petrol);color:var(--navy);}
+  .btn-primary:hover{background:#fff;transform:translateY(-2px);}
+  .btn-outline{background:transparent;color:#fff;border:1.5px solid var(--line);}
+  .btn-outline:hover{border-color:var(--petrol);color:var(--petrol);}
+  .hero-meta{display:flex;gap:40px;margin-top:58px;padding-top:32px;border-top:1px solid var(--line);}
+  .hm-num{font-family:'Archivo',sans-serif;font-weight:800;font-size:2rem;color:#fff;line-height:1;}
+  .hm-num span{color:var(--petrol);}
+  .hm-lbl{font-family:'IBM Plex Mono',monospace;font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-2);margin-top:8px;}
 
-  /* Hero schematic card */
-  .schematic{
-    position:relative;background:var(--card);border:1px solid var(--line);border-radius:8px;
-    box-shadow:0 30px 60px -30px rgba(12,25,34,.28);overflow:hidden;
-  }
-  .sch-top{display:flex;align-items:center;justify-content:space-between;padding:13px 18px;border-bottom:1px solid var(--line-2);background:#FBFCFD;}
-  .sch-top .lbl{font-family:'IBM Plex Mono',monospace;font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);}
-  .sch-top .rev{font-family:'IBM Plex Mono',monospace;font-size:.62rem;color:var(--teal-dk);}
-  .sch-body{padding:8px;}
-  .sch-body svg{width:100%;height:auto;display:block;}
-  .sch-foot{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line-2);}
-  .sch-foot div{padding:14px 16px;text-align:center;}
-  .sch-foot div+div{border-left:1px solid var(--line-2);}
-  .sf-k{font-family:'IBM Plex Mono',monospace;font-size:.56rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-2);}
-  .sf-v{font-family:'Archivo',sans-serif;font-weight:700;font-size:.94rem;color:var(--ink);margin-top:4px;}
-  .draw{stroke-dasharray:600;stroke-dashoffset:600;animation:draw 2.6s ease forwards;}
-  .draw.d2{animation-delay:.4s;}
-  .draw.d3{animation-delay:.8s;}
+  /* Hero graphic: digital twin / schematic */
+  .hero-viz{position:relative;filter:drop-shadow(0 20px 50px rgba(0,255,185,.14));}
+  .hero-viz svg{width:100%;height:auto;display:block;}
+  .draw{stroke-dasharray:800;stroke-dashoffset:800;animation:draw 2.8s ease forwards;}
+  .draw.d2{animation-delay:.5s;}.draw.d3{animation-delay:1s;}.draw.d4{animation-delay:1.4s;}
   @keyframes draw{to{stroke-dashoffset:0;}}
-  .pulse{animation:pulse 2.2s ease-in-out infinite;}
-  @keyframes pulse{0%,100%{opacity:.35;}50%{opacity:1;}}
+  .node{opacity:0;animation:fade .6s ease forwards;}
+  .node.n1{animation-delay:1.2s;}.node.n2{animation-delay:1.6s;}.node.n3{animation-delay:2s;}.node.n4{animation-delay:2.3s;}
+  @keyframes fade{to{opacity:1;}}
+  .glow{animation:glow 2.4s ease-in-out infinite;}
+  @keyframes glow{0%,100%{opacity:.4;}50%{opacity:1;}}
 
   /* ═══ TRUST BAR ═══ */
-  .trust{background:var(--ink);color:#fff;padding:26px 0;}
+  .trust{background:#000018;border-top:1px solid var(--line-2);border-bottom:1px solid var(--line-2);padding:26px 0;}
   .trust-inner{display:flex;align-items:center;gap:40px;flex-wrap:wrap;justify-content:space-between;}
-  .trust-lead{font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--teal-lt);opacity:.85;}
-  .trust-items{display:flex;gap:34px;flex-wrap:wrap;}
-  .trust-item{display:flex;align-items:center;gap:10px;font-size:.84rem;color:#C7D5DC;}
+  .trust-lead{font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-2);}
+  .trust-items{display:flex;gap:36px;flex-wrap:wrap;}
+  .trust-item{display:flex;align-items:center;gap:10px;font-size:.86rem;color:var(--muted);}
   .trust-item b{font-family:'Archivo',sans-serif;font-weight:700;color:#fff;}
-  .trust-item svg{width:17px;height:17px;color:var(--teal);flex-shrink:0;}
+  .trust-item svg{width:17px;height:17px;color:var(--petrol);flex-shrink:0;}
 
   /* ═══ SECTION SHELL ═══ */
-  section{padding:104px 0;}
-  .sec-head{max-width:660px;margin-bottom:56px;}
-  .sec-head h2{font-size:clamp(2rem,3.8vw,2.9rem);font-weight:800;color:var(--ink);margin:16px 0 16px;}
-  .sec-head h2 .t{color:var(--teal);}
-  .sec-head p{color:var(--muted);font-size:1.02rem;}
+  section{padding:112px 0;}
+  .sec-head{max-width:680px;margin-bottom:60px;}
+  .sec-head h2{font-size:clamp(2.1rem,4vw,3.1rem);font-weight:800;color:#fff;margin:18px 0 18px;}
+  .sec-head h2 .t{color:var(--petrol);}
+  .sec-head p{color:var(--muted);font-size:1.06rem;font-weight:300;}
 
   /* ═══ NOSOTROS ═══ */
-  .about{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;}
-  .cap{display:flex;gap:18px;padding:22px 0;border-bottom:1px solid var(--line-2);}
+  .about{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start;}
+  .cap{display:flex;gap:20px;padding:24px 0;border-bottom:1px solid var(--line-2);}
   .cap:last-child{border-bottom:none;}
-  .cap-ic{flex-shrink:0;width:46px;height:46px;border-radius:6px;background:var(--teal-lt);display:flex;align-items:center;justify-content:center;color:var(--teal-dk);}
-  .cap-ic svg{width:23px;height:23px;}
-  .cap h4{font-size:1.02rem;font-weight:700;color:var(--ink);margin-bottom:5px;}
-  .cap p{font-size:.9rem;color:var(--muted);}
-  .quote{background:var(--ink);color:#fff;border-radius:10px;padding:38px 36px;position:relative;overflow:hidden;}
-  .quote::after{content:'\201D';position:absolute;top:-30px;right:14px;font-family:'Archivo',sans-serif;font-size:11rem;color:rgba(255,255,255,.05);line-height:1;}
-  .quote p{font-family:'Archivo',sans-serif;font-weight:600;font-size:1.5rem;line-height:1.32;position:relative;z-index:1;}
-  .quote p span{color:var(--teal);}
-  .cert{margin-top:20px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:26px 28px;display:flex;gap:18px;align-items:flex-start;}
-  .cert-badge{flex-shrink:0;width:52px;height:52px;border-radius:8px;background:linear-gradient(135deg,var(--teal),var(--teal-dk));display:flex;align-items:center;justify-content:center;color:#fff;}
-  .cert-badge svg{width:26px;height:26px;}
-  .cert h4{font-size:1rem;font-weight:700;margin-bottom:6px;}
-  .cert p{font-size:.86rem;color:var(--muted);}
+  .cap-ic{flex-shrink:0;width:48px;height:48px;border-radius:8px;background:rgba(0,255,185,.1);display:flex;align-items:center;justify-content:center;color:var(--petrol);}
+  .cap-ic svg{width:24px;height:24px;}
+  .cap h4{font-size:1.06rem;font-weight:700;color:#fff;margin-bottom:6px;}
+  .cap p{font-size:.92rem;color:var(--muted);}
+  .quote{background:linear-gradient(150deg,var(--navy-2),var(--navy-3));border:1px solid var(--line);border-radius:14px;padding:42px 40px;position:relative;overflow:hidden;}
+  .quote::before{content:'';position:absolute;top:0;left:0;width:5px;height:100%;background:var(--petrol);}
+  .quote p{font-family:'Archivo',sans-serif;font-weight:600;font-size:1.6rem;line-height:1.34;color:#fff;}
+  .quote p span{color:var(--petrol);}
+  .cert{margin-top:22px;background:var(--navy-2);border:1px solid var(--line);border-radius:14px;padding:28px 30px;display:flex;gap:20px;align-items:flex-start;}
+  .cert-badge{flex-shrink:0;width:54px;height:54px;border-radius:10px;background:linear-gradient(135deg,var(--petrol),var(--teal));display:flex;align-items:center;justify-content:center;color:var(--navy);}
+  .cert-badge svg{width:28px;height:28px;}
+  .cert h4{font-size:1.04rem;font-weight:700;margin-bottom:7px;color:#fff;}
+  .cert p{font-size:.88rem;color:var(--muted);}
 
   /* ═══ SERVICIOS ═══ */
-  .svc-section{background:var(--card);}
-  .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden;}
-  .svc{background:var(--card);padding:36px 30px;transition:background .25s;position:relative;}
-  .svc:hover{background:#F7FAFB;}
-  .svc-n{font-family:'IBM Plex Mono',monospace;font-size:.66rem;color:var(--muted-2);letter-spacing:.1em;}
-  .svc-ic{width:50px;height:50px;border-radius:8px;background:var(--teal-lt);display:flex;align-items:center;justify-content:center;color:var(--teal-dk);margin:16px 0 20px;transition:background .25s,color .25s;}
-  .svc:hover .svc-ic{background:var(--teal);color:#fff;}
-  .svc-ic svg{width:25px;height:25px;}
-  .svc h3{font-size:1.12rem;font-weight:700;color:var(--ink);margin-bottom:10px;}
-  .svc p{font-size:.9rem;color:var(--muted);}
+  .svc-section{background:#00001C;}
+  .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line-2);border:1px solid var(--line-2);}
+  .svc{background:var(--navy);padding:40px 34px;transition:background .25s;position:relative;}
+  .svc:hover{background:var(--navy-2);}
+  .svc-n{font-family:'IBM Plex Mono',monospace;font-size:.72rem;color:var(--petrol);letter-spacing:.1em;}
+  .svc-ic{width:54px;height:54px;border-radius:10px;background:rgba(0,255,185,.08);display:flex;align-items:center;justify-content:center;color:var(--petrol);margin:18px 0 22px;transition:background .25s,color .25s;}
+  .svc:hover .svc-ic{background:var(--petrol);color:var(--navy);}
+  .svc-ic svg{width:27px;height:27px;}
+  .svc h3{font-size:1.16rem;font-weight:700;color:#fff;margin-bottom:11px;}
+  .svc p{font-size:.92rem;color:var(--muted);}
 
   /* ═══ BENEFICIOS ═══ */
-  .ben-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
-  .ben{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:30px 28px;transition:transform .2s,box-shadow .2s;}
-  .ben:hover{transform:translateY(-4px);box-shadow:0 20px 40px -24px rgba(12,25,34,.3);}
-  .ben-tag{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--teal-dk);background:var(--teal-lt);padding:5px 10px;border-radius:3px;margin-bottom:16px;}
-  .ben h3{font-size:1.1rem;font-weight:700;margin-bottom:9px;}
-  .ben p{font-size:.9rem;color:var(--muted);}
+  .ben-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  .ben{background:var(--navy-2);border:1px solid var(--line-2);border-radius:12px;padding:32px 30px;transition:transform .2s,border-color .2s;}
+  .ben:hover{transform:translateY(-5px);border-color:rgba(0,255,185,.4);}
+  .ben-tag{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--petrol);background:rgba(0,255,185,.1);padding:6px 11px;border-radius:4px;margin-bottom:18px;}
+  .ben h3{font-size:1.14rem;font-weight:700;margin-bottom:10px;color:#fff;}
+  .ben p{font-size:.92rem;color:var(--muted);}
 
   /* ═══ METODOLOGÍA ═══ */
-  .method-section{background:var(--ink);color:#fff;}
-  .method-section .sec-head h2{color:#fff;}
-  .method-section .sec-head p{color:#9FB2BC;}
-  .method-section .eyebrow{color:var(--teal);}
-  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;}
-  .step{position:relative;padding-top:30px;}
-  .step::before{content:'';position:absolute;top:15px;left:0;right:0;height:1px;background:linear-gradient(90deg,var(--teal),rgba(0,146,158,.15));}
-  .step-n{position:absolute;top:5px;left:0;width:22px;height:22px;border-radius:50%;background:var(--teal);color:#fff;font-family:'IBM Plex Mono',monospace;font-size:.68rem;font-weight:500;display:flex;align-items:center;justify-content:center;}
-  .step h4{font-size:1.06rem;font-weight:700;margin-bottom:10px;color:#fff;}
-  .step p{font-size:.86rem;color:#9FB2BC;}
+  .method-section{background:linear-gradient(180deg,#00001C, #001A33);}
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:26px;}
+  .step{position:relative;padding-top:34px;}
+  .step::before{content:'';position:absolute;top:16px;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--petrol),rgba(0,255,185,.12));}
+  .step-n{position:absolute;top:2px;left:0;width:28px;height:28px;border-radius:50%;background:var(--petrol);color:var(--navy);font-family:'Archivo',sans-serif;font-weight:800;font-size:.82rem;display:flex;align-items:center;justify-content:center;}
+  .step h4{font-size:1.1rem;font-weight:700;margin-bottom:11px;color:#fff;}
+  .step p{font-size:.88rem;color:var(--muted);}
 
   /* ═══ CLIENTES ═══ */
-  .clients-section{background:var(--card);}
+  .clients-section{background:#00001C;}
   .logo-wall{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;}
-  .logo-tile{
-    height:118px;border:1px solid var(--line);border-radius:9px;
-    display:flex;align-items:center;justify-content:center;padding:22px;
-    background:#fff;transition:transform .2s,box-shadow .2s,border-color .2s;
-    position:relative;overflow:hidden;
-  }
-  .logo-tile:hover{transform:translateY(-3px);box-shadow:0 16px 34px -20px rgba(12,25,34,.35);border-color:var(--teal-lt);}
-  .logo-tile img{max-width:100%;max-height:64px;object-fit:contain;}
-  .wm{font-family:'Archivo',sans-serif;font-weight:800;letter-spacing:-.02em;font-size:1.5rem;text-align:center;line-height:1;}
-  .wm small{display:block;font-family:'IBM Plex Mono',monospace;font-weight:400;font-size:.5rem;letter-spacing:.2em;color:var(--muted-2);margin-top:6px;text-transform:uppercase;}
-  .clients-note{text-align:center;margin-top:30px;font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.06em;color:var(--muted-2);}
+  .logo-tile{height:120px;border:1px solid var(--line-2);border-radius:10px;display:flex;align-items:center;justify-content:center;padding:24px;
+    background:linear-gradient(160deg,var(--navy-2),#001222);transition:transform .2s,border-color .2s,background .2s;overflow:hidden;}
+  .logo-tile:hover{transform:translateY(-3px);border-color:rgba(0,255,185,.4);background:var(--navy-2);}
+  .logo-tile img{max-width:100%;max-height:62px;object-fit:contain;filter:brightness(0) invert(1);opacity:.85;transition:.2s;}
+  .logo-tile:hover img{opacity:1;filter:none;}
+  .wm{font-family:'Archivo',sans-serif;font-weight:800;letter-spacing:-.02em;font-size:1.5rem;text-align:center;line-height:1;color:#fff;transition:color .2s;}
+  .logo-tile:hover .wm{color:var(--petrol);}
+  .wm small{display:block;font-family:'IBM Plex Mono',monospace;font-weight:400;font-size:.5rem;letter-spacing:.2em;color:var(--muted-2);margin-top:7px;text-transform:uppercase;}
+  .clients-note{text-align:center;margin-top:32px;font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.06em;color:var(--muted-2);}
 
   /* ═══ CONTACTO ═══ */
-  .contact-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:start;}
-  .c-item{display:flex;gap:16px;padding:20px 0;border-bottom:1px solid var(--line-2);}
+  .contact-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:60px;align-items:start;}
+  .c-item{display:flex;gap:18px;padding:22px 0;border-bottom:1px solid var(--line-2);}
   .c-item:last-child{border-bottom:none;}
-  .c-ic{flex-shrink:0;width:42px;height:42px;border-radius:7px;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;color:var(--teal);}
-  .c-ic svg{width:19px;height:19px;}
-  .c-k{font-family:'IBM Plex Mono',monospace;font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-2);margin-bottom:4px;}
-  .c-v{font-size:.94rem;color:var(--ink-2);}
-  .c-v a{color:var(--teal-dk);text-decoration:none;}
-  .c-v a:hover{text-decoration:underline;}
-  .c-v strong{color:var(--ink);font-weight:600;}
-  .form{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:36px;box-shadow:0 24px 50px -30px rgba(12,25,34,.24);}
-  .form h3{font-size:1.3rem;font-weight:700;margin-bottom:6px;}
-  .form .sub{font-size:.88rem;color:var(--muted);margin-bottom:24px;}
-  .form form{display:flex;flex-direction:column;gap:15px;}
-  .f2{display:grid;grid-template-columns:1fr 1fr;gap:15px;}
-  .form label{display:block;font-family:'IBM Plex Mono',monospace;font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:7px;}
-  .form input,.form textarea{
-    width:100%;background:var(--paper);border:1px solid var(--line);border-radius:6px;
-    padding:12px 14px;font-family:'Inter',sans-serif;font-size:.9rem;color:var(--ink);outline:none;transition:border-color .18s,background .18s;
-  }
-  .form input:focus,.form textarea:focus{border-color:var(--teal);background:#fff;}
+  .c-ic{flex-shrink:0;width:44px;height:44px;border-radius:9px;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;color:var(--petrol);}
+  .c-ic svg{width:20px;height:20px;}
+  .c-k{font-family:'IBM Plex Mono',monospace;font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-2);margin-bottom:5px;}
+  .c-v{font-size:.96rem;color:var(--text);}
+  .c-v a{color:var(--petrol);}.c-v a:hover{text-decoration:underline;}
+  .c-v strong{color:#fff;font-weight:600;}
+  .form{background:var(--navy-2);border:1px solid var(--line);border-radius:14px;padding:40px;}
+  .form h3{font-size:1.36rem;font-weight:700;margin-bottom:7px;color:#fff;}
+  .form .sub{font-size:.9rem;color:var(--muted);margin-bottom:26px;}
+  .form form{display:flex;flex-direction:column;gap:16px;}
+  .f2{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .form label{display:block;font-family:'IBM Plex Mono',monospace;font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;}
+  .form input,.form textarea{width:100%;background:var(--navy);border:1px solid var(--line);border-radius:7px;padding:13px 15px;font-family:'Inter',sans-serif;font-size:.92rem;color:#fff;outline:none;transition:border-color .18s;}
+  .form input::placeholder,.form textarea::placeholder{color:var(--muted-2);}
+  .form input:focus,.form textarea:focus{border-color:var(--petrol);}
   .form textarea{min-height:120px;resize:vertical;}
-  .form button{margin-top:6px;justify-content:center;}
+  .form button{margin-top:8px;justify-content:center;}
 
   /* ═══ FOOTER ═══ */
-  footer{background:var(--ink);color:#fff;padding:60px 0 34px;}
-  .foot-top{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,.1);}
-  .foot-brand svg{width:44px;height:44px;margin-bottom:16px;}
-  .foot-brand p{color:#9FB2BC;font-size:.88rem;max-width:340px;margin-top:12px;}
-  .foot-col h5{font-family:'IBM Plex Mono',monospace;font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;color:var(--teal);margin-bottom:16px;}
-  .foot-col a{display:block;color:#C7D5DC;text-decoration:none;font-size:.88rem;margin-bottom:10px;transition:color .18s;}
+  footer{background:#000018;padding:64px 0 36px;border-top:1px solid var(--line-2);}
+  .foot-top{display:grid;grid-template-columns:2fr 1fr 1fr;gap:44px;padding-bottom:44px;border-bottom:1px solid var(--line-2);}
+  .foot-brand svg{width:46px;height:46px;margin-bottom:18px;}
+  .foot-brand p{color:var(--muted);font-size:.9rem;max-width:360px;margin-top:14px;}
+  .foot-col h5{font-family:'IBM Plex Mono',monospace;font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--petrol);margin-bottom:18px;}
+  .foot-col a{display:block;color:var(--muted);font-size:.9rem;margin-bottom:11px;transition:color .18s;}
   .foot-col a:hover{color:#fff;}
-  .foot-bot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;padding-top:26px;font-family:'IBM Plex Mono',monospace;font-size:.66rem;letter-spacing:.08em;color:var(--muted-2);}
+  .foot-bot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;padding-top:28px;font-family:'IBM Plex Mono',monospace;font-size:.68rem;letter-spacing:.08em;color:var(--muted-2);}
 
   /* ═══ RESPONSIVE ═══ */
   @media(max-width:960px){
-    .hero-grid,.about,.contact-grid{grid-template-columns:1fr;gap:44px;}
+    .hero-grid,.about,.contact-grid{grid-template-columns:1fr;gap:48px;}
+    .hero::after{background:linear-gradient(180deg,rgba(0,0,40,.5),var(--navy));}
+    .hero-viz{max-width:480px;margin:0 auto;}
     .svc-grid,.ben-grid{grid-template-columns:1fr 1fr;}
     .steps{grid-template-columns:1fr 1fr;}
     .logo-wall{grid-template-columns:repeat(3,1fr);}
     .foot-top{grid-template-columns:1fr 1fr;}
-    .nav-links{display:none;}
-    .burger{display:flex;}
-    .schematic{max-width:460px;}
+    .nav-links{display:none;}.burger{display:flex;}
   }
   @media(max-width:560px){
-    .wrap{padding:0 20px;}
+    .wrap{padding:0 22px;}
     .svc-grid,.ben-grid,.steps{grid-template-columns:1fr;}
     .logo-wall{grid-template-columns:1fr 1fr;}
     .f2{grid-template-columns:1fr;}
-    .hero-meta{gap:22px;}
-    .trust-inner{gap:20px;}
-    section{padding:72px 0;}
+    .hero-meta{gap:26px;}section{padding:76px 0;}
     .foot-top{grid-template-columns:1fr;}
   }
   @media(prefers-reduced-motion:reduce){
-    .draw{animation:none;stroke-dashoffset:0;}
-    .pulse{animation:none;opacity:1;}
+    .draw{animation:none;stroke-dashoffset:0;}.node{animation:none;opacity:1;}.glow{animation:none;opacity:1;}
   }
 </style>
 </head>
@@ -275,10 +243,10 @@
 <header class="nav">
   <div class="wrap nav-inner">
     <a href="#top" class="brand">
-      <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="1" y="1" width="38" height="38" rx="7" fill="#0C1922"/>
-        <path d="M13 11v18M13 20h10M23 11v18" stroke="#00929E" stroke-width="2.6" stroke-linecap="round"/>
-        <circle cx="28" cy="14" r="2.4" fill="#00929E"/>
+      <svg viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="1" y="1" width="40" height="40" rx="8" fill="#001E3C" stroke="#00FFB9" stroke-width="1"/>
+        <path d="M14 12v18M14 21h11M25 12v18" stroke="#00FFB9" stroke-width="2.8" stroke-linecap="round"/>
+        <circle cx="30" cy="15" r="2.6" fill="#00FFB9"/>
       </svg>
       <span class="brand-name">PSIMAG<small>INDUSTRIAL S.A.C.</small></span>
     </a>
@@ -300,6 +268,7 @@
 
 <!-- ═══ HERO ═══ -->
 <section class="hero" id="top">
+  <div class="hero-photo"></div>
   <div class="wrap hero-grid">
     <div>
       <span class="eyebrow">Ingeniería · Gestión de Activos · Mantenimiento</span>
@@ -307,47 +276,51 @@
       <p class="lead">Levantamos, ordenamos y documentamos sus activos industriales: <b>taxonomía SAP bajo ISO 14224</b>, planos CAD (P&ID, PFD, isométricos) y bases de datos de repuestos — para que su equipo de <b>mantenimiento y confiabilidad</b> trabaje con datos precisos, no con suposiciones.</p>
       <div class="hero-actions">
         <a href="#contacto" class="btn btn-primary">Solicitar cotización
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </a>
         <a href="#servicios" class="btn btn-outline">Ver servicios</a>
       </div>
       <div class="hero-meta">
-        <div><div class="hm-num">10+</div><div class="hm-lbl">Clientes industriales</div></div>
+        <div><div class="hm-num">10<span>+</span></div><div class="hm-lbl">Clientes industriales</div></div>
         <div><div class="hm-num">ISO</div><div class="hm-lbl">14224 · 55001</div></div>
         <div><div class="hm-num">BV</div><div class="hm-lbl">Homologación B. Veritas</div></div>
       </div>
     </div>
 
-    <!-- Signature: schematic P&ID card -->
-    <div class="schematic" aria-hidden="true">
-      <div class="sch-top">
-        <span class="lbl">P&amp;ID · SALA DE MÁQUINAS</span>
-        <span class="rev mono">REV. 2026-A</span>
-      </div>
-      <div class="sch-body">
-        <svg viewBox="0 0 400 230" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path class="draw" d="M20 60 H120" stroke="#00929E" stroke-width="2"/>
-          <path class="draw d2" d="M180 60 H300 V150 H340" stroke="#00929E" stroke-width="2"/>
-          <path class="draw d3" d="M120 150 H240" stroke="#20323D" stroke-width="1.6" stroke-dasharray="5 4"/>
-          <circle cx="150" cy="60" r="30" stroke="#0C1922" stroke-width="2" fill="#F7FAFB"/>
-          <path d="M132 60 L162 46 V74 Z" fill="#00929E"/>
-          <rect x="90" y="120" width="60" height="60" rx="4" stroke="#0C1922" stroke-width="2" fill="#F7FAFB"/>
-          <path d="M90 138 H150 M90 156 H150" stroke="#C3D3DA" stroke-width="1.2"/>
-          <path d="M300 60 l14 -10 v20 z M300 60 l-14 -10 v20 z" fill="#E39A1C"/>
-          <circle cx="340" cy="150" r="20" stroke="#00929E" stroke-width="2" fill="#fff" class="pulse"/>
-          <text x="340" y="146" font-family="IBM Plex Mono" font-size="9" fill="#016B76" text-anchor="middle">PT</text>
-          <text x="340" y="158" font-family="IBM Plex Mono" font-size="9" fill="#016B76" text-anchor="middle">101</text>
-          <text x="150" y="106" font-family="IBM Plex Mono" font-size="9" fill="#5F7683" text-anchor="middle">P-201</text>
-          <text x="120" y="200" font-family="IBM Plex Mono" font-size="9" fill="#5F7683" text-anchor="middle">TK-05</text>
-          <path d="M20 30 v-8 M120 30 v-8 M20 26 H120" stroke="#8A9AA4" stroke-width="1"/>
-          <text x="70" y="18" font-family="IBM Plex Mono" font-size="8" fill="#8A9AA4" text-anchor="middle">DN-100</text>
-        </svg>
-      </div>
-      <div class="sch-foot">
-        <div><div class="sf-k">Norma</div><div class="sf-v">ISO 14224</div></div>
-        <div><div class="sf-k">Formato</div><div class="sf-v">SAP PM</div></div>
-        <div><div class="sf-k">Entregable</div><div class="sf-v">CAD + BD</div></div>
-      </div>
+    <!-- Signature: digital-twin / P&ID graphic -->
+    <div class="hero-viz" aria-hidden="true">
+      <svg viewBox="0 0 440 360" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- retícula tenue -->
+        <g stroke="rgba(0,255,185,.07)" stroke-width="1">
+          <path d="M0 60H440M0 120H440M0 180H440M0 240H440M0 300H440"/>
+          <path d="M60 0V360M120 0V360M180 0V360M240 0V360M300 0V360M360 0V360"/>
+        </g>
+        <!-- líneas de proceso -->
+        <path class="draw" d="M40 90 H150" stroke="#00FFB9" stroke-width="2.5"/>
+        <path class="draw d2" d="M210 90 H340 V190 H380" stroke="#00FFB9" stroke-width="2.5"/>
+        <path class="draw d3" d="M150 210 H300" stroke="#4DA8C8" stroke-width="2" stroke-dasharray="6 5"/>
+        <path class="draw d4" d="M120 210 V270 H260" stroke="#009999" stroke-width="2"/>
+        <!-- bomba -->
+        <circle class="node n1" cx="180" cy="90" r="34" stroke="#EAF1F6" stroke-width="2" fill="#001222"/>
+        <path class="node n1" d="M160 90 L194 72 V108 Z" fill="#00FFB9"/>
+        <!-- tanque -->
+        <rect class="node n2" x="88" y="176" width="66" height="66" rx="5" stroke="#EAF1F6" stroke-width="2" fill="#001222"/>
+        <path class="node n2" d="M88 196 H154 M88 216 H154" stroke="rgba(255,255,255,.2)" stroke-width="1.4"/>
+        <!-- válvula ámbar -->
+        <path class="node n3" d="M340 90 l16 -11 v22 z M340 90 l-16 -11 v22 z" fill="#00FFB9"/>
+        <!-- instrumento -->
+        <circle class="node n4 glow" cx="380" cy="190" r="24" stroke="#00FFB9" stroke-width="2.5" fill="rgba(0,255,185,.08)"/>
+        <text class="node n4" x="380" y="186" font-family="IBM Plex Mono" font-size="10" fill="#00FFB9" text-anchor="middle">PT</text>
+        <text class="node n4" x="380" y="199" font-family="IBM Plex Mono" font-size="10" fill="#00FFB9" text-anchor="middle">101</text>
+        <!-- nodo datos -->
+        <circle class="node n4 glow" cx="260" cy="270" r="8" fill="#00FFB9"/>
+        <!-- etiquetas -->
+        <text class="node n2" x="180" y="146" font-family="IBM Plex Mono" font-size="10" fill="#8FA3B8" text-anchor="middle">P-201</text>
+        <text class="node n2" x="121" y="262" font-family="IBM Plex Mono" font-size="10" fill="#8FA3B8" text-anchor="middle">TK-05</text>
+        <!-- cota superior -->
+        <path d="M40 54 v-10 M150 54 v-10 M40 49 H150" stroke="#5E7186" stroke-width="1"/>
+        <text x="95" y="36" font-family="IBM Plex Mono" font-size="9" fill="#5E7186" text-anchor="middle">DN-100 · ISO 14224</text>
+      </svg>
     </div>
   </div>
 </section>
@@ -415,42 +388,12 @@
       <p>Soluciones integrales de documentación técnica para plantas industriales, de campo a base de datos.</p>
     </div>
     <div class="svc-grid">
-      <div class="svc">
-        <span class="svc-n">/ 01</span>
-        <div class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg></div>
-        <h3>Levantamiento de información</h3>
-        <p>Inspección visual y fotográfica en campo. Registro de dimensiones, materiales y datos de placa de todos los equipos de planta.</p>
-      </div>
-      <div class="svc">
-        <span class="svc-n">/ 02</span>
-        <div class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="4" y="4" width="16" height="4" rx="1"/><rect x="4" y="10" width="16" height="4" rx="1"/><rect x="4" y="16" width="16" height="4" rx="1"/></svg></div>
-        <h3>Taxonomía y codificación SAP</h3>
-        <p>Clasificación de maquinaria bajo ISO 14224. Estructura jerárquica y matrícula de equipos lista para carga en SAP PM.</p>
-      </div>
-      <div class="svc">
-        <span class="svc-n">/ 03</span>
-        <div class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 17l6-6 4 4 8-8M15 7h6v6"/></svg></div>
-        <h3>Diseño técnico CAD</h3>
-        <p>Elaboración de P&ID, PFD, diagramas unifilares, layouts de planta, planos de repuestos e isométricos 3D.</p>
-      </div>
-      <div class="svc">
-        <span class="svc-n">/ 04</span>
-        <div class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg></div>
-        <h3>Base de datos de activos y repuestos</h3>
-        <p>Bases centralizadas de motores, bombas, reductores y válvulas. Inventario de repuestos críticos compatible con SAP.</p>
-      </div>
-      <div class="svc">
-        <span class="svc-n">/ 05</span>
-        <div class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 3H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V8zM14 3v5h5M9 13h6M9 16h4"/></svg></div>
-        <h3>Fichas técnicas de equipos</h3>
-        <p>Fichas mecánicas y eléctricas completas, con historial de mantenimiento y datos de componentes del fabricante.</p>
-      </div>
-      <div class="svc">
-        <span class="svc-n">/ 06</span>
-        <div class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3L3 8v8l9 5 9-5V8zM3 8l9 5 9-5M12 13v8"/></svg></div>
-        <h3>Diseño estructural y simulaciones</h3>
-        <p>Estructuras metálicas con simulación de cargas. Planos de fabricación para reposición local de componentes críticos.</p>
-      </div>
+      <div class="svc"><span class="svc-n">/ 01</span><div class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg></div><h3>Levantamiento de información</h3><p>Inspección visual y fotográfica en campo. Registro de dimensiones, materiales y datos de placa de todos los equipos de planta.</p></div>
+      <div class="svc"><span class="svc-n">/ 02</span><div class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="4" y="4" width="16" height="4" rx="1"/><rect x="4" y="10" width="16" height="4" rx="1"/><rect x="4" y="16" width="16" height="4" rx="1"/></svg></div><h3>Taxonomía y codificación SAP</h3><p>Clasificación de maquinaria bajo ISO 14224. Estructura jerárquica y matrícula de equipos lista para carga en SAP PM.</p></div>
+      <div class="svc"><span class="svc-n">/ 03</span><div class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 17l6-6 4 4 8-8M15 7h6v6"/></svg></div><h3>Diseño técnico CAD</h3><p>Elaboración de P&ID, PFD, diagramas unifilares, layouts de planta, planos de repuestos e isométricos 3D.</p></div>
+      <div class="svc"><span class="svc-n">/ 04</span><div class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg></div><h3>Base de datos de activos y repuestos</h3><p>Bases centralizadas de motores, bombas, reductores y válvulas. Inventario de repuestos críticos compatible con SAP.</p></div>
+      <div class="svc"><span class="svc-n">/ 05</span><div class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 3H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V8zM14 3v5h5M9 13h6M9 16h4"/></svg></div><h3>Fichas técnicas de equipos</h3><p>Fichas mecánicas y eléctricas completas, con historial de mantenimiento y datos de componentes del fabricante.</p></div>
+      <div class="svc"><span class="svc-n">/ 06</span><div class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3L3 8v8l9 5 9-5V8zM3 8l9 5 9-5M12 13v8"/></svg></div><h3>Diseño estructural y simulaciones</h3><p>Estructuras metálicas con simulación de cargas. Planos de fabricación para reposición local de componentes críticos.</p></div>
     </div>
   </div>
 </section>
@@ -500,20 +443,20 @@
       <p>Líderes de la industria alimentaria, acuícola, textil y de manufactura en el Perú.</p>
     </div>
     <div class="logo-wall">
-      <div class="logo-tile"><img src="logos/alicorp.png" alt="Alicorp" onerror="this.outerHTML='&lt;div class=wm style=color:#E4022B&gt;Alicorp&lt;/div&gt;'"></div>
-      <div class="logo-tile"><img src="logos/vitapro.png" alt="Vitapro" onerror="this.outerHTML='&lt;div class=wm style=color:#0097A9&gt;Vitapro&lt;small&gt;S.A.&lt;/small&gt;&lt;/div&gt;'"></div>
-      <div class="logo-tile"><img src="logos/arca-lindley.png" alt="Arca Continental Lindley" onerror="this.outerHTML='&lt;div class=wm style=color:#D8232A;font-size:1.15rem&gt;Arca Continental&lt;small&gt;Lindley&lt;/small&gt;&lt;/div&gt;'"></div>
-      <div class="logo-tile"><img src="logos/bimbo.png" alt="Bimbo" onerror="this.outerHTML='&lt;div class=wm style=color:#004B93&gt;Bimbo&lt;/div&gt;'"></div>
-      <div class="logo-tile"><img src="logos/nestle.png" alt="Nestlé" onerror="this.outerHTML='&lt;div class=wm style=color:#231F20&gt;Nestl&eacute;&lt;/div&gt;'"></div>
-      <div class="logo-tile"><img src="logos/kaeser.png" alt="Kaeser Compresores" onerror="this.outerHTML='&lt;div class=wm style=color:#1A1A1A;font-size:1.3rem&gt;KAESER&lt;small&gt;Compresores&lt;/small&gt;&lt;/div&gt;'"></div>
-      <div class="logo-tile"><img src="logos/mepsa.png" alt="MEPSA" onerror="this.outerHTML='&lt;div class=wm style=color:#00447C&gt;MEPSA&lt;/div&gt;'"></div>
-      <div class="logo-tile"><img src="logos/naltech.png" alt="Naltech" onerror="this.outerHTML='&lt;div class=wm style=color:#009444&gt;Naltech&lt;/div&gt;'"></div>
-      <div class="logo-tile"><img src="logos/morken.png" alt="Morken Group" onerror="this.outerHTML='&lt;div class=wm style=color:#003F6B&gt;Morken&lt;small&gt;Group&lt;/small&gt;&lt;/div&gt;'"></div>
-      <div class="logo-tile"><img src="logos/textil-amazonas.png" alt="Textil El Amazonas" onerror="this.outerHTML='&lt;div class=wm style=color:#1E7A3D;font-size:1.1rem&gt;Textil&lt;small&gt;El Amazonas&lt;/small&gt;&lt;/div&gt;'"></div>
-      <div class="logo-tile"><img src="logos/qroma.png" alt="QROMA" onerror="this.outerHTML='&lt;div class=wm style=color:#E4002B&gt;QROMA&lt;/div&gt;'"></div>
-      <div class="logo-tile" style="border-style:dashed;background:var(--paper);"><div class="wm" style="color:var(--muted-2);font-size:.9rem;font-weight:600;">+ su empresa</div></div>
+      <div class="logo-tile"><img src="logos/alicorp.png" alt="Alicorp" onerror="this.outerHTML='&lt;div class=wm&gt;Alicorp&lt;/div&gt;'"></div>
+      <div class="logo-tile"><img src="logos/vitapro.png" alt="Vitapro" onerror="this.outerHTML='&lt;div class=wm&gt;Vitapro&lt;small&gt;S.A.&lt;/small&gt;&lt;/div&gt;'"></div>
+      <div class="logo-tile"><img src="logos/arca-lindley.png" alt="Arca Continental Lindley" onerror="this.outerHTML='&lt;div class=wm style=font-size:1.15rem&gt;Arca Continental&lt;small&gt;Lindley&lt;/small&gt;&lt;/div&gt;'"></div>
+      <div class="logo-tile"><img src="logos/bimbo.png" alt="Bimbo" onerror="this.outerHTML='&lt;div class=wm&gt;Bimbo&lt;/div&gt;'"></div>
+      <div class="logo-tile"><img src="logos/nestle.png" alt="Nestlé" onerror="this.outerHTML='&lt;div class=wm&gt;Nestl&eacute;&lt;/div&gt;'"></div>
+      <div class="logo-tile"><img src="logos/kaeser.png" alt="Kaeser Compresores" onerror="this.outerHTML='&lt;div class=wm style=font-size:1.3rem&gt;KAESER&lt;small&gt;Compresores&lt;/small&gt;&lt;/div&gt;'"></div>
+      <div class="logo-tile"><img src="logos/mepsa.png" alt="MEPSA" onerror="this.outerHTML='&lt;div class=wm&gt;MEPSA&lt;/div&gt;'"></div>
+      <div class="logo-tile"><img src="logos/naltech.png" alt="Naltech" onerror="this.outerHTML='&lt;div class=wm&gt;Naltech&lt;/div&gt;'"></div>
+      <div class="logo-tile"><img src="logos/morken.png" alt="Morken Group" onerror="this.outerHTML='&lt;div class=wm style=font-size:1.3rem&gt;Morken&lt;small&gt;Group&lt;/small&gt;&lt;/div&gt;'"></div>
+      <div class="logo-tile"><img src="logos/textil-amazonas.png" alt="Textil El Amazonas" onerror="this.outerHTML='&lt;div class=wm style=font-size:1.1rem&gt;Textil&lt;small&gt;El Amazonas&lt;/small&gt;&lt;/div&gt;'"></div>
+      <div class="logo-tile"><img src="logos/qroma.png" alt="QROMA" onerror="this.outerHTML='&lt;div class=wm&gt;QROMA&lt;/div&gt;'"></div>
+      <div class="logo-tile" style="border-style:dashed;"><div class="wm" style="font-size:.92rem;font-weight:600;color:var(--muted-2);">+ su empresa</div></div>
     </div>
-    <p class="clients-note">Los nombres corresponden a empresas atendidas · Reemplace cada tile con el logo oficial en /logos/</p>
+    <p class="clients-note">Los nombres corresponden a empresas atendidas · Coloque el logo oficial (PNG) en /logos/ para reemplazar el texto</p>
   </div>
 </section>
 
@@ -527,35 +470,17 @@
     </div>
     <div class="contact-grid">
       <div>
-        <div class="c-item">
-          <div class="c-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6 8-6s8 2 8 6"/></svg></div>
-          <div><div class="c-k">Contacto</div><div class="c-v"><strong>Elvis Nilton Gonzales Blas</strong><br>Gerente General</div></div>
-        </div>
-        <div class="c-item">
-          <div class="c-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 4h4l2 5-2.5 1.5a12 12 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z"/></svg></div>
-          <div><div class="c-k">Teléfono / WhatsApp</div><div class="c-v"><a href="tel:+51994962807">+51 994 962 807</a></div></div>
-        </div>
-        <div class="c-item">
-          <div class="c-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="M3 7l9 6 9-6"/></svg></div>
-          <div><div class="c-k">Correo</div><div class="c-v"><a href="mailto:elvis.gonzales@psimag-industrial.com">elvis.gonzales@psimag-industrial.com</a></div></div>
-        </div>
-        <div class="c-item">
-          <div class="c-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 21s7-6 7-11a7 7 0 10-14 0c0 5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
-          <div><div class="c-k">Dirección</div><div class="c-v">P.J. Daniel A. Carrión, Calle 38 Mz.P Lt.4<br>San Martín de Porres — Lima, Perú<br><span class="mono" style="font-size:.76rem;color:var(--muted-2);">RUC 20563572460</span></div></div>
-        </div>
+        <div class="c-item"><div class="c-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6 8-6s8 2 8 6"/></svg></div><div><div class="c-k">Contacto</div><div class="c-v"><strong>Elvis Nilton Gonzales Blas</strong><br>Gerente General</div></div></div>
+        <div class="c-item"><div class="c-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 4h4l2 5-2.5 1.5a12 12 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z"/></svg></div><div><div class="c-k">Teléfono / WhatsApp</div><div class="c-v"><a href="tel:+51994962807">+51 994 962 807</a></div></div></div>
+        <div class="c-item"><div class="c-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="M3 7l9 6 9-6"/></svg></div><div><div class="c-k">Correo</div><div class="c-v"><a href="mailto:elvis.gonzales@psimag-industrial.com">elvis.gonzales@psimag-industrial.com</a></div></div></div>
+        <div class="c-item"><div class="c-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 21s7-6 7-11a7 7 0 10-14 0c0 5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></div><div><div class="c-k">Dirección</div><div class="c-v">P.J. Daniel A. Carrión, Calle 38 Mz.P Lt.4<br>San Martín de Porres — Lima, Perú<br><span class="mono" style="font-size:.76rem;color:var(--muted-2);">RUC 20563572460</span></div></div></div>
       </div>
       <div class="form">
         <h3>Solicite una cotización</h3>
         <p class="sub">Sin compromiso. Le respondemos con un alcance y estimación inicial.</p>
         <form onsubmit="event.preventDefault();this.querySelector('button').textContent='✓ Enviado — gracias';">
-          <div class="f2">
-            <div><label>Nombre</label><input type="text" required></div>
-            <div><label>Empresa</label><input type="text" required></div>
-          </div>
-          <div class="f2">
-            <div><label>Correo</label><input type="email" required></div>
-            <div><label>Teléfono</label><input type="tel"></div>
-          </div>
+          <div class="f2"><div><label>Nombre</label><input type="text" required></div><div><label>Empresa</label><input type="text" required></div></div>
+          <div class="f2"><div><label>Correo</label><input type="email" required></div><div><label>Teléfono</label><input type="tel"></div></div>
           <div><label>Asunto</label><input type="text" placeholder="Ej. Levantamiento P&ID sala de máquinas"></div>
           <div><label>Mensaje</label><textarea placeholder="Describa su proyecto: industria, sistemas o equipos que necesita documentar..."></textarea></div>
           <button type="submit" class="btn btn-primary">Enviar consulta</button>
@@ -570,29 +495,16 @@
   <div class="wrap">
     <div class="foot-top">
       <div class="foot-brand">
-        <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect x="1" y="1" width="38" height="38" rx="7" fill="#122430" stroke="#00929E" stroke-width="1"/>
-          <path d="M13 11v18M13 20h10M23 11v18" stroke="#00929E" stroke-width="2.6" stroke-linecap="round"/>
-          <circle cx="28" cy="14" r="2.4" fill="#00929E"/>
+        <svg viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="1" y="1" width="40" height="40" rx="8" fill="#001E3C" stroke="#00FFB9" stroke-width="1"/>
+          <path d="M14 12v18M14 21h11M25 12v18" stroke="#00FFB9" stroke-width="2.8" stroke-linecap="round"/>
+          <circle cx="30" cy="15" r="2.6" fill="#00FFB9"/>
         </svg>
-        <div class="brand-name" style="color:#fff;">PSIMAG<small style="color:var(--teal);">INDUSTRIAL S.A.C.</small></div>
+        <div class="brand-name" style="color:#fff;">PSIMAG<small style="color:var(--petrol);">INDUSTRIAL S.A.C.</small></div>
         <p>Proyectos, diseño, fabricación y mantenimiento. Soporte técnico estratégico para la gestión de activos en la industria peruana.</p>
       </div>
-      <div class="foot-col">
-        <h5>Navegación</h5>
-        <a href="#nosotros">Nosotros</a>
-        <a href="#servicios">Servicios</a>
-        <a href="#beneficios">Beneficios</a>
-        <a href="#metodologia">Metodología</a>
-        <a href="#clientes">Clientes</a>
-      </div>
-      <div class="foot-col">
-        <h5>Contacto</h5>
-        <a href="tel:+51994962807">+51 994 962 807</a>
-        <a href="mailto:elvis.gonzales@psimag-industrial.com">Correo electrónico</a>
-        <a href="#contacto">Cotizar proyecto</a>
-        <span style="color:#9FB2BC;font-size:.88rem;">Lima, Perú</span>
-      </div>
+      <div class="foot-col"><h5>Navegación</h5><a href="#nosotros">Nosotros</a><a href="#servicios">Servicios</a><a href="#beneficios">Beneficios</a><a href="#metodologia">Metodología</a><a href="#clientes">Clientes</a></div>
+      <div class="foot-col"><h5>Contacto</h5><a href="tel:+51994962807">+51 994 962 807</a><a href="mailto:elvis.gonzales@psimag-industrial.com">Correo electrónico</a><a href="#contacto">Cotizar proyecto</a><span style="color:var(--muted);font-size:.9rem;">Lima, Perú</span></div>
     </div>
     <div class="foot-bot">
       <span>© 2026 PSIMAG INDUSTRIAL S.A.C. · RUC 20563572460</span>
