@@ -3,817 +3,601 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PSIMAG Industrial SAC — Ingeniería, Gestión de Activos y Mantenimiento</title>
-<meta name="description" content="PSIMAG Industrial SAC: levantamiento de información técnica, taxonomía SAP ISO 14224, diseño CAD P&ID y gestión de activos para la industria peruana.">
-<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+<title>PSIMAG Industrial S.A.C. — Ingeniería y Gestión de Activos</title>
+<meta name="description" content="PSIMAG Industrial S.A.C.: levantamiento de información técnica, taxonomía SAP ISO 14224, diseño CAD (P&ID, PFD, isométricos) y gestión de activos para la industria peruana. Empresa homologada Bureau Veritas.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Inter:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 
-  :root {
-    --teal:     #00B4C8;
-    --teal-brt: #17D9EE;
-    --navy:     #0A1A26;
-    --navy-2:   #0F2432;
-    --steel:    #16303F;
-    --steel-lt: #23445A;
-    --line:     rgba(0,180,200,.22);
-    --amber:    #F5A623;
-    --white:    #FFFFFF;
-    --grey:     #9DB4BF;
-    --grey-dk:  #5E7A88;
+  :root{
+    --paper:#EDF1F3;
+    --card:#FFFFFF;
+    --ink:#0C1922;
+    --ink-2:#20323D;
+    --teal:#00929E;
+    --teal-dk:#016B76;
+    --teal-lt:#E1F1F2;
+    --amber:#E39A1C;
+    --muted:#5F7683;
+    --muted-2:#8A9AA4;
+    --line:rgba(12,25,34,.10);
+    --line-2:rgba(12,25,34,.06);
   }
 
-  html { scroll-behavior: smooth; }
-  body {
-    font-family: 'Roboto', sans-serif;
-    background: var(--navy);
-    color: var(--white);
-    overflow-x: hidden;
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Inter',sans-serif;
+    background:var(--paper);
+    color:var(--ink);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
   }
+  a{color:inherit;}
+  ::selection{background:var(--teal);color:#fff;}
 
-  /* ══ TEXTURAS INDUSTRIALES ══ */
-  .grid-bg {
+  .wrap{max-width:1200px;margin:0 auto;padding:0 32px;}
+
+  .mono{font-family:'IBM Plex Mono',monospace;}
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:.7rem;letter-spacing:.24em;text-transform:uppercase;
+    color:var(--teal-dk);
+    display:inline-flex;align-items:center;gap:10px;
+  }
+  .eyebrow::before{content:'';width:26px;height:1px;background:var(--teal);}
+
+  h1,h2,h3,h4{font-family:'Archivo',sans-serif;line-height:1.08;letter-spacing:-.01em;}
+
+  /* ═══ NAV ═══ */
+  header.nav{
+    position:sticky;top:0;z-index:100;
+    background:rgba(237,241,243,.85);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:72px;}
+  .brand{display:flex;align-items:center;gap:13px;text-decoration:none;}
+  .brand svg{width:40px;height:40px;flex-shrink:0;}
+  .brand-name{font-family:'Archivo',sans-serif;font-weight:800;font-size:1.28rem;letter-spacing:.02em;color:var(--ink);line-height:1;}
+  .brand-name small{display:block;font-family:'IBM Plex Mono',monospace;font-weight:400;font-size:.56rem;letter-spacing:.26em;color:var(--teal-dk);margin-top:4px;}
+  .nav-links{display:flex;align-items:center;gap:34px;list-style:none;}
+  .nav-links a{text-decoration:none;font-size:.86rem;font-weight:500;color:var(--ink-2);transition:color .18s;}
+  .nav-links a:hover{color:var(--teal);}
+  .nav-btn{
+    background:var(--ink);color:#fff !important;
+    padding:11px 22px;border-radius:3px;font-weight:600 !important;font-size:.84rem !important;
+    transition:background .2s;
+  }
+  .nav-btn:hover{background:var(--teal);}
+  .burger{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:5px;}
+  .burger span{width:24px;height:2px;background:var(--ink);display:block;}
+
+  /* ═══ HERO ═══ */
+  .hero{position:relative;padding:88px 0 96px;overflow:hidden;}
+  .hero::before{
+    content:'';position:absolute;inset:0;z-index:0;
     background-image:
-      linear-gradient(rgba(0,180,200,.045) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(0,180,200,.045) 1px, transparent 1px);
-    background-size: 44px 44px;
+      linear-gradient(var(--line-2) 1px,transparent 1px),
+      linear-gradient(90deg,var(--line-2) 1px,transparent 1px);
+    background-size:52px 52px;
+    -webkit-mask-image:radial-gradient(ellipse 90% 80% at 70% 30%,#000 30%,transparent 75%);
+    mask-image:radial-gradient(ellipse 90% 80% at 70% 30%,#000 30%,transparent 75%);
   }
-  .hazard {
-    height: 6px;
-    background: repeating-linear-gradient(
-      -45deg,
-      var(--teal) 0, var(--teal) 14px,
-      var(--navy) 14px, var(--navy) 28px
-    );
+  .hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.08fr .92fr;gap:56px;align-items:center;}
+  .hero h1{font-size:clamp(2.6rem,5.2vw,4.3rem);font-weight:800;color:var(--ink);margin:22px 0 24px;}
+  .hero h1 .t{color:var(--teal);}
+  .hero .lead{font-size:1.08rem;color:var(--muted);max-width:540px;font-weight:400;}
+  .hero .lead b{color:var(--ink-2);font-weight:600;}
+  .hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:34px;}
+  .btn{
+    display:inline-flex;align-items:center;gap:9px;text-decoration:none;
+    font-weight:600;font-size:.92rem;padding:15px 28px;border-radius:3px;
+    transition:transform .15s,background .2s,box-shadow .2s;cursor:pointer;border:none;
   }
+  .btn-primary{background:var(--teal);color:#fff;box-shadow:0 6px 22px -8px rgba(0,146,158,.7);}
+  .btn-primary:hover{background:var(--teal-dk);transform:translateY(-2px);}
+  .btn-outline{background:transparent;color:var(--ink);border:1px solid var(--line);}
+  .btn-outline:hover{border-color:var(--teal);color:var(--teal);}
+  .hero-meta{display:flex;gap:34px;margin-top:52px;padding-top:30px;border-top:1px solid var(--line);}
+  .hm-num{font-family:'Archivo',sans-serif;font-weight:800;font-size:1.9rem;color:var(--ink);line-height:1;}
+  .hm-lbl{font-family:'IBM Plex Mono',monospace;font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-2);margin-top:7px;}
 
-  /* ══ NAV ══ */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 200;
-    background: rgba(10,26,38,.97);
-    backdrop-filter: blur(8px);
-    border-bottom: 1px solid var(--line);
-    display: flex; align-items: center; justify-content: space-between;
-    height: 68px;
-    padding: 0 4vw;
+  /* Hero schematic card */
+  .schematic{
+    position:relative;background:var(--card);border:1px solid var(--line);border-radius:8px;
+    box-shadow:0 30px 60px -30px rgba(12,25,34,.28);overflow:hidden;
   }
-  .nav-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-  .nav-brand svg { width: 42px; height: 42px; }
-  .brand-txt {
-    font-family: 'Oswald', sans-serif; font-weight: 700;
-    font-size: 1.25rem; color: var(--white); letter-spacing: .06em; line-height: 1;
-  }
-  .brand-txt small {
-    display: block; font-family: 'Roboto Mono', monospace;
-    font-size: .58rem; font-weight: 400; color: var(--teal);
-    letter-spacing: .28em; margin-top: 3px;
-  }
-  nav ul { list-style: none; display: flex; gap: 1.8rem; }
-  nav ul a {
-    color: var(--grey); text-decoration: none;
-    font-family: 'Oswald', sans-serif; font-size: .78rem; font-weight: 500;
-    letter-spacing: .14em; text-transform: uppercase;
-    padding-bottom: 4px; border-bottom: 2px solid transparent;
-    transition: color .2s, border-color .2s;
-  }
-  nav ul a:hover { color: var(--teal-brt); border-color: var(--teal); }
-  .nav-cta {
-    background: var(--teal); color: var(--navy) !important;
-    padding: 9px 20px 9px !important; border: none !important;
-    font-weight: 600 !important; clip-path: polygon(8px 0, 100% 0, calc(100% - 8px) 100%, 0 100%);
-  }
-  .nav-cta:hover { background: var(--teal-brt); }
+  .sch-top{display:flex;align-items:center;justify-content:space-between;padding:13px 18px;border-bottom:1px solid var(--line-2);background:#FBFCFD;}
+  .sch-top .lbl{font-family:'IBM Plex Mono',monospace;font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);}
+  .sch-top .rev{font-family:'IBM Plex Mono',monospace;font-size:.62rem;color:var(--teal-dk);}
+  .sch-body{padding:8px;}
+  .sch-body svg{width:100%;height:auto;display:block;}
+  .sch-foot{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line-2);}
+  .sch-foot div{padding:14px 16px;text-align:center;}
+  .sch-foot div+div{border-left:1px solid var(--line-2);}
+  .sf-k{font-family:'IBM Plex Mono',monospace;font-size:.56rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-2);}
+  .sf-v{font-family:'Archivo',sans-serif;font-weight:700;font-size:.94rem;color:var(--ink);margin-top:4px;}
+  .draw{stroke-dasharray:600;stroke-dashoffset:600;animation:draw 2.6s ease forwards;}
+  .draw.d2{animation-delay:.4s;}
+  .draw.d3{animation-delay:.8s;}
+  @keyframes draw{to{stroke-dashoffset:0;}}
+  .pulse{animation:pulse 2.2s ease-in-out infinite;}
+  @keyframes pulse{0%,100%{opacity:.35;}50%{opacity:1;}}
 
-  /* ══ HERO ══ */
-  .hero {
-    margin-top: 68px;
-    min-height: 94vh;
-    position: relative;
-    display: flex; align-items: center;
-    background:
-      radial-gradient(ellipse 80% 60% at 75% 20%, rgba(0,180,200,.10), transparent 60%),
-      var(--navy);
-  }
-  .hero::before {
-    content: '';
-    position: absolute; inset: 0;
-    background-image:
-      linear-gradient(rgba(0,180,200,.05) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(0,180,200,.05) 1px, transparent 1px);
-    background-size: 44px 44px;
-    mask-image: linear-gradient(to bottom, black 60%, transparent);
-  }
-  .hero-wrap {
-    position: relative; z-index: 2;
-    width: 100%;
-    display: grid; grid-template-columns: 1.15fr .85fr;
-    gap: 3rem; align-items: center;
-    padding: 60px 4vw;
-  }
-  .kicker {
-    display: inline-flex; align-items: center; gap: 10px;
-    font-family: 'Roboto Mono', monospace;
-    font-size: .68rem; letter-spacing: .22em; text-transform: uppercase;
-    color: var(--teal-brt);
-    border: 1px solid var(--line);
-    padding: 7px 14px;
-    margin-bottom: 1.6rem;
-    background: rgba(0,180,200,.05);
-  }
-  .kicker::before { content: '●'; font-size: .5rem; animation: blink 2s infinite; }
-  @keyframes blink { 50% { opacity: .25; } }
-  .hero h1 {
-    font-family: 'Oswald', sans-serif;
-    font-size: clamp(2.6rem, 5.2vw, 4.4rem);
-    font-weight: 700; line-height: 1.04;
-    text-transform: uppercase; letter-spacing: .01em;
-    margin-bottom: 1.4rem;
-  }
-  .hero h1 .hl { color: var(--teal-brt); }
-  .hero-sub {
-    color: var(--grey); font-size: 1.02rem; font-weight: 300;
-    line-height: 1.75; max-width: 560px; margin-bottom: 2.4rem;
-  }
-  .hero-sub strong { color: var(--white); font-weight: 500; }
-  .btn {
-    display: inline-block; text-decoration: none;
-    font-family: 'Oswald', sans-serif; font-size: .85rem; font-weight: 600;
-    letter-spacing: .12em; text-transform: uppercase;
-    padding: 15px 34px;
-    transition: all .2s;
-  }
-  .btn-solid {
-    background: var(--teal); color: var(--navy);
-    clip-path: polygon(12px 0, 100% 0, calc(100% - 12px) 100%, 0 100%);
-  }
-  .btn-solid:hover { background: var(--teal-brt); transform: translateY(-2px); }
-  .btn-ghost {
-    border: 1px solid var(--line); color: var(--grey); margin-left: 14px;
-  }
-  .btn-ghost:hover { border-color: var(--teal); color: var(--teal-brt); }
+  /* ═══ TRUST BAR ═══ */
+  .trust{background:var(--ink);color:#fff;padding:26px 0;}
+  .trust-inner{display:flex;align-items:center;gap:40px;flex-wrap:wrap;justify-content:space-between;}
+  .trust-lead{font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--teal-lt);opacity:.85;}
+  .trust-items{display:flex;gap:34px;flex-wrap:wrap;}
+  .trust-item{display:flex;align-items:center;gap:10px;font-size:.84rem;color:#C7D5DC;}
+  .trust-item b{font-family:'Archivo',sans-serif;font-weight:700;color:#fff;}
+  .trust-item svg{width:17px;height:17px;color:var(--teal);flex-shrink:0;}
 
-  /* Panel técnico del hero */
-  .spec-panel {
-    border: 1px solid var(--line);
-    background: linear-gradient(160deg, var(--navy-2), var(--steel));
-    position: relative;
-  }
-  .spec-head {
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 12px 18px;
-    border-bottom: 1px solid var(--line);
-    font-family: 'Roboto Mono', monospace;
-    font-size: .62rem; letter-spacing: .2em; text-transform: uppercase;
-    color: var(--teal-brt);
-  }
-  .spec-head .dots { display: flex; gap: 6px; }
-  .spec-head .dots span { width: 8px; height: 8px; border-radius: 50%; background: var(--line); }
-  .spec-head .dots span:first-child { background: var(--teal); }
-  .spec-body { padding: 22px 18px; display: flex; flex-direction: column; gap: 14px; }
-  .spec-row {
-    display: flex; justify-content: space-between; align-items: baseline;
-    padding-bottom: 12px; border-bottom: 1px dashed rgba(0,180,200,.14);
-  }
-  .spec-row:last-child { border: none; padding-bottom: 0; }
-  .spec-key {
-    font-family: 'Roboto Mono', monospace; font-size: .68rem;
-    color: var(--grey-dk); letter-spacing: .1em; text-transform: uppercase;
-  }
-  .spec-val {
-    font-family: 'Oswald', sans-serif; font-size: 1rem; font-weight: 600;
-    color: var(--white); text-align: right;
-  }
-  .spec-val em { color: var(--teal-brt); font-style: normal; }
-  .corner { position: absolute; width: 14px; height: 14px; border-color: var(--teal); border-style: solid; }
-  .c-tl { top: -1px; left: -1px; border-width: 2px 0 0 2px; }
-  .c-tr { top: -1px; right: -1px; border-width: 2px 2px 0 0; }
-  .c-bl { bottom: -1px; left: -1px; border-width: 0 0 2px 2px; }
-  .c-br { bottom: -1px; right: -1px; border-width: 0 2px 2px 0; }
+  /* ═══ SECTION SHELL ═══ */
+  section{padding:104px 0;}
+  .sec-head{max-width:660px;margin-bottom:56px;}
+  .sec-head h2{font-size:clamp(2rem,3.8vw,2.9rem);font-weight:800;color:var(--ink);margin:16px 0 16px;}
+  .sec-head h2 .t{color:var(--teal);}
+  .sec-head p{color:var(--muted);font-size:1.02rem;}
 
-  /* ══ MARQUEE NORMAS ══ */
-  .norms-strip {
-    background: var(--navy-2);
-    border-top: 1px solid var(--line);
-    border-bottom: 1px solid var(--line);
-    padding: 16px 0;
-    overflow: hidden;
-    white-space: nowrap;
-  }
-  .norms-inner {
-    display: inline-block;
-    animation: scroll 30s linear infinite;
-  }
-  @keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-  .norm-item {
-    display: inline-flex; align-items: center; gap: 10px;
-    font-family: 'Roboto Mono', monospace;
-    font-size: .72rem; letter-spacing: .18em; text-transform: uppercase;
-    color: var(--grey-dk);
-    margin: 0 2.4rem;
-  }
-  .norm-item b { color: var(--teal); font-weight: 500; }
+  /* ═══ NOSOTROS ═══ */
+  .about{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;}
+  .cap{display:flex;gap:18px;padding:22px 0;border-bottom:1px solid var(--line-2);}
+  .cap:last-child{border-bottom:none;}
+  .cap-ic{flex-shrink:0;width:46px;height:46px;border-radius:6px;background:var(--teal-lt);display:flex;align-items:center;justify-content:center;color:var(--teal-dk);}
+  .cap-ic svg{width:23px;height:23px;}
+  .cap h4{font-size:1.02rem;font-weight:700;color:var(--ink);margin-bottom:5px;}
+  .cap p{font-size:.9rem;color:var(--muted);}
+  .quote{background:var(--ink);color:#fff;border-radius:10px;padding:38px 36px;position:relative;overflow:hidden;}
+  .quote::after{content:'\201D';position:absolute;top:-30px;right:14px;font-family:'Archivo',sans-serif;font-size:11rem;color:rgba(255,255,255,.05);line-height:1;}
+  .quote p{font-family:'Archivo',sans-serif;font-weight:600;font-size:1.5rem;line-height:1.32;position:relative;z-index:1;}
+  .quote p span{color:var(--teal);}
+  .cert{margin-top:20px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:26px 28px;display:flex;gap:18px;align-items:flex-start;}
+  .cert-badge{flex-shrink:0;width:52px;height:52px;border-radius:8px;background:linear-gradient(135deg,var(--teal),var(--teal-dk));display:flex;align-items:center;justify-content:center;color:#fff;}
+  .cert-badge svg{width:26px;height:26px;}
+  .cert h4{font-size:1rem;font-weight:700;margin-bottom:6px;}
+  .cert p{font-size:.86rem;color:var(--muted);}
 
-  /* ══ SECCIONES BASE ══ */
-  section { padding: 96px 4vw; position: relative; }
-  .sec-tag {
-    font-family: 'Roboto Mono', monospace;
-    font-size: .66rem; letter-spacing: .26em; text-transform: uppercase;
-    color: var(--teal-brt);
-    display: flex; align-items: center; gap: 12px;
-    margin-bottom: 1rem;
-  }
-  .sec-tag::before { content: ''; width: 40px; height: 1px; background: var(--teal); }
-  .sec-title {
-    font-family: 'Oswald', sans-serif;
-    font-size: clamp(1.9rem, 3.6vw, 2.9rem);
-    font-weight: 700; text-transform: uppercase; line-height: 1.08;
-    margin-bottom: 1rem;
-  }
-  .sec-title .hl { color: var(--teal-brt); }
-  .sec-desc { color: var(--grey); font-weight: 300; line-height: 1.75; max-width: 640px; margin-bottom: 3rem; }
+  /* ═══ SERVICIOS ═══ */
+  .svc-section{background:var(--card);}
+  .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden;}
+  .svc{background:var(--card);padding:36px 30px;transition:background .25s;position:relative;}
+  .svc:hover{background:#F7FAFB;}
+  .svc-n{font-family:'IBM Plex Mono',monospace;font-size:.66rem;color:var(--muted-2);letter-spacing:.1em;}
+  .svc-ic{width:50px;height:50px;border-radius:8px;background:var(--teal-lt);display:flex;align-items:center;justify-content:center;color:var(--teal-dk);margin:16px 0 20px;transition:background .25s,color .25s;}
+  .svc:hover .svc-ic{background:var(--teal);color:#fff;}
+  .svc-ic svg{width:25px;height:25px;}
+  .svc h3{font-size:1.12rem;font-weight:700;color:var(--ink);margin-bottom:10px;}
+  .svc p{font-size:.9rem;color:var(--muted);}
 
-  /* ══ NOSOTROS ══ */
-  #nosotros { background: var(--navy-2); }
-  .about-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: 4rem; align-items: start; }
-  .capability {
-    display: flex; gap: 16px; align-items: flex-start;
-    padding: 18px 0;
-    border-bottom: 1px solid rgba(0,180,200,.1);
-  }
-  .cap-ico {
-    flex-shrink: 0;
-    width: 44px; height: 44px;
-    border: 1px solid var(--line);
-    display: flex; align-items: center; justify-content: center;
-    color: var(--teal-brt);
-  }
-  .cap-ico svg { width: 22px; height: 22px; }
-  .cap-title { font-family: 'Oswald', sans-serif; font-size: .95rem; font-weight: 600; text-transform: uppercase; letter-spacing: .04em; margin-bottom: 4px; }
-  .cap-desc { font-size: .84rem; color: var(--grey-dk); line-height: 1.6; font-weight: 300; }
+  /* ═══ BENEFICIOS ═══ */
+  .ben-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+  .ben{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:30px 28px;transition:transform .2s,box-shadow .2s;}
+  .ben:hover{transform:translateY(-4px);box-shadow:0 20px 40px -24px rgba(12,25,34,.3);}
+  .ben-tag{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--teal-dk);background:var(--teal-lt);padding:5px 10px;border-radius:3px;margin-bottom:16px;}
+  .ben h3{font-size:1.1rem;font-weight:700;margin-bottom:9px;}
+  .ben p{font-size:.9rem;color:var(--muted);}
 
-  .quote-panel {
-    background: linear-gradient(150deg, var(--steel), var(--navy-2));
-    border-left: 3px solid var(--teal);
-    padding: 2.2rem;
-    margin-bottom: 1.6rem;
-  }
-  .quote-panel p {
-    font-family: 'Oswald', sans-serif; font-size: 1.35rem; font-weight: 500;
-    line-height: 1.4; font-style: italic;
-  }
-  .quote-panel p span { color: var(--teal-brt); }
-  .cert-panel {
-    border: 1px solid var(--line);
-    padding: 1.6rem 1.8rem;
-    background: rgba(0,180,200,.03);
-    position: relative;
-  }
-  .cert-flag {
-    position: absolute; top: 0; right: 0;
-    background: var(--teal); color: var(--navy);
-    font-family: 'Roboto Mono', monospace; font-size: .58rem; font-weight: 700;
-    letter-spacing: .16em; text-transform: uppercase;
-    padding: 5px 12px;
-  }
-  .cert-panel h4 { font-family: 'Oswald', sans-serif; text-transform: uppercase; font-size: 1rem; letter-spacing: .05em; margin-bottom: .6rem; color: var(--white); }
-  .cert-panel p { font-size: .84rem; color: var(--grey); line-height: 1.65; font-weight: 300; }
+  /* ═══ METODOLOGÍA ═══ */
+  .method-section{background:var(--ink);color:#fff;}
+  .method-section .sec-head h2{color:#fff;}
+  .method-section .sec-head p{color:#9FB2BC;}
+  .method-section .eyebrow{color:var(--teal);}
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;}
+  .step{position:relative;padding-top:30px;}
+  .step::before{content:'';position:absolute;top:15px;left:0;right:0;height:1px;background:linear-gradient(90deg,var(--teal),rgba(0,146,158,.15));}
+  .step-n{position:absolute;top:5px;left:0;width:22px;height:22px;border-radius:50%;background:var(--teal);color:#fff;font-family:'IBM Plex Mono',monospace;font-size:.68rem;font-weight:500;display:flex;align-items:center;justify-content:center;}
+  .step h4{font-size:1.06rem;font-weight:700;margin-bottom:10px;color:#fff;}
+  .step p{font-size:.86rem;color:#9FB2BC;}
 
-  /* ══ SERVICIOS ══ */
-  #servicios { background: var(--navy); }
-  .svc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4rem; }
-  .svc-card {
-    border: 1px solid rgba(0,180,200,.15);
-    background: var(--navy-2);
-    padding: 2rem 1.7rem;
-    position: relative;
-    transition: border-color .25s, transform .25s, background .25s;
-    overflow: hidden;
+  /* ═══ CLIENTES ═══ */
+  .clients-section{background:var(--card);}
+  .logo-wall{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;}
+  .logo-tile{
+    height:118px;border:1px solid var(--line);border-radius:9px;
+    display:flex;align-items:center;justify-content:center;padding:22px;
+    background:#fff;transition:transform .2s,box-shadow .2s,border-color .2s;
+    position:relative;overflow:hidden;
   }
-  .svc-card::before {
-    content: attr(data-num);
-    position: absolute; top: 12px; right: 16px;
-    font-family: 'Oswald', sans-serif; font-size: 2.6rem; font-weight: 700;
-    color: rgba(0,180,200,.08);
-    line-height: 1;
-  }
-  .svc-card:hover { border-color: var(--teal); transform: translateY(-4px); background: var(--steel); }
-  .svc-ico {
-    width: 52px; height: 52px;
-    border: 1px solid var(--line);
-    display: flex; align-items: center; justify-content: center;
-    margin-bottom: 1.2rem;
-    color: var(--teal-brt);
-    background: rgba(0,180,200,.05);
-  }
-  .svc-ico svg { width: 26px; height: 26px; }
-  .svc-title {
-    font-family: 'Oswald', sans-serif; font-size: 1.05rem; font-weight: 600;
-    text-transform: uppercase; letter-spacing: .03em;
-    margin-bottom: .7rem;
-  }
-  .svc-desc { font-size: .83rem; color: var(--grey-dk); line-height: 1.65; font-weight: 300; }
+  .logo-tile:hover{transform:translateY(-3px);box-shadow:0 16px 34px -20px rgba(12,25,34,.35);border-color:var(--teal-lt);}
+  .logo-tile img{max-width:100%;max-height:64px;object-fit:contain;}
+  .wm{font-family:'Archivo',sans-serif;font-weight:800;letter-spacing:-.02em;font-size:1.5rem;text-align:center;line-height:1;}
+  .wm small{display:block;font-family:'IBM Plex Mono',monospace;font-weight:400;font-size:.5rem;letter-spacing:.2em;color:var(--muted-2);margin-top:6px;text-transform:uppercase;}
+  .clients-note{text-align:center;margin-top:30px;font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.06em;color:var(--muted-2);}
 
-  /* ══ BENEFICIOS ══ */
-  #beneficios { background: var(--navy-2); }
-  .ben-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4rem; }
-  .ben-card {
-    padding: 1.8rem 1.6rem;
-    border-top: 3px solid var(--teal);
-    background: linear-gradient(180deg, rgba(0,180,200,.06), transparent 55%);
-    border-left: 1px solid rgba(0,180,200,.1);
-    border-right: 1px solid rgba(0,180,200,.1);
-    border-bottom: 1px solid rgba(0,180,200,.1);
+  /* ═══ CONTACTO ═══ */
+  .contact-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:start;}
+  .c-item{display:flex;gap:16px;padding:20px 0;border-bottom:1px solid var(--line-2);}
+  .c-item:last-child{border-bottom:none;}
+  .c-ic{flex-shrink:0;width:42px;height:42px;border-radius:7px;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;color:var(--teal);}
+  .c-ic svg{width:19px;height:19px;}
+  .c-k{font-family:'IBM Plex Mono',monospace;font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-2);margin-bottom:4px;}
+  .c-v{font-size:.94rem;color:var(--ink-2);}
+  .c-v a{color:var(--teal-dk);text-decoration:none;}
+  .c-v a:hover{text-decoration:underline;}
+  .c-v strong{color:var(--ink);font-weight:600;}
+  .form{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:36px;box-shadow:0 24px 50px -30px rgba(12,25,34,.24);}
+  .form h3{font-size:1.3rem;font-weight:700;margin-bottom:6px;}
+  .form .sub{font-size:.88rem;color:var(--muted);margin-bottom:24px;}
+  .form form{display:flex;flex-direction:column;gap:15px;}
+  .f2{display:grid;grid-template-columns:1fr 1fr;gap:15px;}
+  .form label{display:block;font-family:'IBM Plex Mono',monospace;font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:7px;}
+  .form input,.form textarea{
+    width:100%;background:var(--paper);border:1px solid var(--line);border-radius:6px;
+    padding:12px 14px;font-family:'Inter',sans-serif;font-size:.9rem;color:var(--ink);outline:none;transition:border-color .18s,background .18s;
   }
-  .ben-metric {
-    font-family: 'Roboto Mono', monospace; font-size: .62rem;
-    letter-spacing: .2em; text-transform: uppercase;
-    color: var(--teal-brt); margin-bottom: .7rem;
-  }
-  .ben-title { font-family: 'Oswald', sans-serif; font-size: 1rem; font-weight: 600; text-transform: uppercase; margin-bottom: .55rem; }
-  .ben-desc { font-size: .82rem; color: var(--grey-dk); line-height: 1.65; font-weight: 300; }
+  .form input:focus,.form textarea:focus{border-color:var(--teal);background:#fff;}
+  .form textarea{min-height:120px;resize:vertical;}
+  .form button{margin-top:6px;justify-content:center;}
 
-  /* ══ METODOLOGÍA ══ */
-  #metodologia { background: var(--navy); }
-  .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.4rem; counter-reset: step; }
-  .step {
-    border: 1px solid rgba(0,180,200,.15);
-    background: var(--navy-2);
-    padding: 1.8rem 1.5rem;
-    position: relative;
-  }
-  .step::after {
-    content: '';
-    position: absolute; top: 50%; right: -1.4rem;
-    width: 1.4rem; height: 1px;
-    background: var(--teal);
-  }
-  .step:last-child::after { display: none; }
-  .step-idx {
-    font-family: 'Oswald', sans-serif; font-size: .78rem; font-weight: 600;
-    color: var(--navy); background: var(--teal);
-    display: inline-block; padding: 4px 12px;
-    letter-spacing: .1em;
-    clip-path: polygon(6px 0, 100% 0, calc(100% - 6px) 100%, 0 100%);
-    margin-bottom: 1rem;
-  }
-  .step h4 { font-family: 'Oswald', sans-serif; font-size: .98rem; font-weight: 600; text-transform: uppercase; margin-bottom: .6rem; }
-  .step p { font-size: .8rem; color: var(--grey-dk); line-height: 1.65; font-weight: 300; }
+  /* ═══ FOOTER ═══ */
+  footer{background:var(--ink);color:#fff;padding:60px 0 34px;}
+  .foot-top{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,.1);}
+  .foot-brand svg{width:44px;height:44px;margin-bottom:16px;}
+  .foot-brand p{color:#9FB2BC;font-size:.88rem;max-width:340px;margin-top:12px;}
+  .foot-col h5{font-family:'IBM Plex Mono',monospace;font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;color:var(--teal);margin-bottom:16px;}
+  .foot-col a{display:block;color:#C7D5DC;text-decoration:none;font-size:.88rem;margin-bottom:10px;transition:color .18s;}
+  .foot-col a:hover{color:#fff;}
+  .foot-bot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;padding-top:26px;font-family:'IBM Plex Mono',monospace;font-size:.66rem;letter-spacing:.08em;color:var(--muted-2);}
 
-  /* ══ CLIENTES ══ */
-  #clientes { background: var(--navy-2); }
-  .logo-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1.2rem;
+  /* ═══ RESPONSIVE ═══ */
+  @media(max-width:960px){
+    .hero-grid,.about,.contact-grid{grid-template-columns:1fr;gap:44px;}
+    .svc-grid,.ben-grid{grid-template-columns:1fr 1fr;}
+    .steps{grid-template-columns:1fr 1fr;}
+    .logo-wall{grid-template-columns:repeat(3,1fr);}
+    .foot-top{grid-template-columns:1fr 1fr;}
+    .nav-links{display:none;}
+    .burger{display:flex;}
+    .schematic{max-width:460px;}
   }
-  .logo-cell {
-    background: #FFFFFF;
-    border: 1px solid rgba(0,180,200,.15);
-    height: 110px;
-    display: flex; align-items: center; justify-content: center;
-    padding: 18px 24px;
-    transition: transform .2s, box-shadow .2s;
-    position: relative;
+  @media(max-width:560px){
+    .wrap{padding:0 20px;}
+    .svc-grid,.ben-grid,.steps{grid-template-columns:1fr;}
+    .logo-wall{grid-template-columns:1fr 1fr;}
+    .f2{grid-template-columns:1fr;}
+    .hero-meta{gap:22px;}
+    .trust-inner{gap:20px;}
+    section{padding:72px 0;}
+    .foot-top{grid-template-columns:1fr;}
   }
-  .logo-cell:hover { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(0,180,200,.25); }
-  .logo-cell img {
-    max-width: 100%; max-height: 100%;
-    object-fit: contain;
-    filter: grayscale(100%); opacity: .75;
-    transition: filter .25s, opacity .25s;
-  }
-  .logo-cell:hover img { filter: grayscale(0%); opacity: 1; }
-  .logo-fallback {
-    font-family: 'Oswald', sans-serif; font-weight: 600;
-    font-size: 1rem; text-transform: uppercase; letter-spacing: .04em;
-    color: #10303F; text-align: center;
-  }
-
-  /* ══ CONTACTO ══ */
-  #contacto { background: var(--navy); }
-  .contact-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 3.5rem; }
-  .c-item { display: flex; gap: 14px; padding: 16px 0; border-bottom: 1px solid rgba(0,180,200,.1); }
-  .c-ico {
-    flex-shrink: 0; width: 40px; height: 40px;
-    border: 1px solid var(--line);
-    display: flex; align-items: center; justify-content: center;
-    color: var(--teal-brt);
-  }
-  .c-ico svg { width: 18px; height: 18px; }
-  .c-label { font-family: 'Roboto Mono', monospace; font-size: .58rem; letter-spacing: .2em; text-transform: uppercase; color: var(--grey-dk); margin-bottom: 3px; }
-  .c-val { font-size: .88rem; color: var(--grey); line-height: 1.55; }
-  .c-val a { color: var(--teal-brt); text-decoration: none; }
-  .c-val a:hover { text-decoration: underline; }
-  .c-val strong { color: var(--white); }
-
-  .form-panel {
-    border: 1px solid var(--line);
-    background: var(--navy-2);
-    padding: 2rem;
-    position: relative;
-  }
-  .form-panel form { display: flex; flex-direction: column; gap: 1rem; }
-  .f-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-  .form-panel input, .form-panel textarea {
-    width: 100%;
-    background: var(--navy);
-    border: 1px solid rgba(0,180,200,.18);
-    color: var(--white);
-    font-family: 'Roboto', sans-serif;
-    font-size: .85rem; font-weight: 300;
-    padding: 13px 15px;
-    outline: none;
-    transition: border-color .2s;
-  }
-  .form-panel input::placeholder, .form-panel textarea::placeholder { color: var(--grey-dk); }
-  .form-panel input:focus, .form-panel textarea:focus { border-color: var(--teal); }
-  .form-panel textarea { min-height: 130px; resize: vertical; }
-  .form-panel button {
-    align-self: flex-start;
-    background: var(--teal); color: var(--navy);
-    border: none; cursor: pointer;
-    font-family: 'Oswald', sans-serif; font-size: .85rem; font-weight: 600;
-    letter-spacing: .12em; text-transform: uppercase;
-    padding: 14px 36px;
-    clip-path: polygon(10px 0, 100% 0, calc(100% - 10px) 100%, 0 100%);
-    transition: background .2s;
-  }
-  .form-panel button:hover { background: var(--teal-brt); }
-
-  /* ══ FOOTER ══ */
-  footer {
-    background: #060E14;
-    border-top: 1px solid var(--line);
-    padding: 2.2rem 4vw;
-    display: flex; align-items: center; justify-content: space-between;
-    flex-wrap: wrap; gap: 1rem;
-  }
-  .foot-brand { font-family: 'Oswald', sans-serif; font-weight: 700; letter-spacing: .08em; font-size: 1rem; }
-  .foot-brand span { color: var(--teal-brt); }
-  .foot-meta { font-family: 'Roboto Mono', monospace; font-size: .64rem; color: var(--grey-dk); letter-spacing: .1em; line-height: 1.8; text-align: right; }
-
-  /* ══ RESPONSIVE ══ */
-  @media (max-width: 1000px) {
-    .hero-wrap, .about-grid, .contact-grid { grid-template-columns: 1fr; }
-    .svc-grid, .ben-grid { grid-template-columns: 1fr 1fr; }
-    .steps { grid-template-columns: 1fr 1fr; }
-    .step::after { display: none; }
-    .logo-grid { grid-template-columns: repeat(3, 1fr); }
-    nav ul { display: none; }
-  }
-  @media (max-width: 600px) {
-    .svc-grid, .ben-grid, .steps { grid-template-columns: 1fr; }
-    .logo-grid { grid-template-columns: 1fr 1fr; }
-    .f-row { grid-template-columns: 1fr; }
-    .btn-ghost { margin-left: 0; margin-top: 12px; }
-    section { padding: 70px 5vw; }
+  @media(prefers-reduced-motion:reduce){
+    .draw{animation:none;stroke-dashoffset:0;}
+    .pulse{animation:none;opacity:1;}
   }
 </style>
 </head>
 <body>
 
-<!-- ══ NAV ══ -->
-<nav>
-  <a href="#" class="nav-brand">
-    <svg viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M22 3 L38 12 V32 L22 41 L6 32 V12 Z" stroke="#00B4C8" stroke-width="1.6" fill="rgba(0,180,200,.06)"/>
-      <path d="M16 14 V30 M16 21 H28 M28 14 V30" stroke="#17D9EE" stroke-width="2.4" stroke-linecap="square"/>
-    </svg>
-    <div class="brand-txt">PSIMAG<small>INDUSTRIAL S.A.C.</small></div>
-  </a>
-  <ul>
-    <li><a href="#nosotros">Nosotros</a></li>
-    <li><a href="#servicios">Servicios</a></li>
-    <li><a href="#beneficios">Beneficios</a></li>
-    <li><a href="#metodologia">Metodología</a></li>
-    <li><a href="#clientes">Clientes</a></li>
-    <li><a href="#contacto" class="nav-cta">Cotizar</a></li>
-  </ul>
-</nav>
-
-<!-- ══ HERO ══ -->
-<header class="hero">
-  <div class="hero-wrap">
-    <div>
-      <span class="kicker">Ingeniería · Gestión de Activos · Mantenimiento</span>
-      <h1>Soporte técnico<br>estratégico para la<br><span class="hl">industria peruana</span></h1>
-      <p class="hero-sub">Levantamiento de información técnica en planta, <strong>taxonomía SAP bajo ISO 14224</strong>, diseño CAD (P&ID, PFD, isométricos) y bases de datos de activos y repuestos — la información precisa que su equipo de <strong>mantenimiento y confiabilidad</strong> necesita para decidir.</p>
-      <a href="#servicios" class="btn btn-solid">Ver servicios</a>
-      <a href="#contacto" class="btn btn-ghost">Solicitar cotización</a>
-    </div>
-
-    <div class="spec-panel">
-      <span class="corner c-tl"></span><span class="corner c-tr"></span>
-      <span class="corner c-bl"></span><span class="corner c-br"></span>
-      <div class="spec-head">
-        <span>FICHA // PSIMAG-2026</span>
-        <div class="dots"><span></span><span></span><span></span></div>
-      </div>
-      <div class="spec-body">
-        <div class="spec-row">
-          <span class="spec-key">Especialidad</span>
-          <span class="spec-val">Gestión de <em>Activos</em></span>
-        </div>
-        <div class="spec-row">
-          <span class="spec-key">Normativa</span>
-          <span class="spec-val">ISO <em>14224</em> · ISO <em>55001</em></span>
-        </div>
-        <div class="spec-row">
-          <span class="spec-key">Homologación</span>
-          <span class="spec-val">Bureau <em>Veritas</em></span>
-        </div>
-        <div class="spec-row">
-          <span class="spec-key">Sistemas</span>
-          <span class="spec-val">Vapor · Frío · Aire · PTAR</span>
-        </div>
-        <div class="spec-row">
-          <span class="spec-key">Clientes industriales</span>
-          <span class="spec-val"><em>10+</em> empresas líderes</span>
-        </div>
-      </div>
-    </div>
+<!-- ═══ NAV ═══ -->
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a href="#top" class="brand">
+      <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="1" y="1" width="38" height="38" rx="7" fill="#0C1922"/>
+        <path d="M13 11v18M13 20h10M23 11v18" stroke="#00929E" stroke-width="2.6" stroke-linecap="round"/>
+        <circle cx="28" cy="14" r="2.4" fill="#00929E"/>
+      </svg>
+      <span class="brand-name">PSIMAG<small>INDUSTRIAL S.A.C.</small></span>
+    </a>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="#nosotros">Nosotros</a></li>
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#beneficios">Beneficios</a></li>
+        <li><a href="#metodologia">Metodología</a></li>
+        <li><a href="#clientes">Clientes</a></li>
+        <li><a href="#contacto" class="nav-btn">Cotizar proyecto</a></li>
+      </ul>
+    </nav>
+    <button class="burger" aria-label="Menú" onclick="var n=document.querySelector('.nav-links');n.style.display=n.style.display==='flex'?'none':'flex';">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </header>
 
-<div class="hazard"></div>
+<!-- ═══ HERO ═══ -->
+<section class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">Ingeniería · Gestión de Activos · Mantenimiento</span>
+      <h1>La información técnica que su planta <span class="t">necesita para decidir</span></h1>
+      <p class="lead">Levantamos, ordenamos y documentamos sus activos industriales: <b>taxonomía SAP bajo ISO 14224</b>, planos CAD (P&ID, PFD, isométricos) y bases de datos de repuestos — para que su equipo de <b>mantenimiento y confiabilidad</b> trabaje con datos precisos, no con suposiciones.</p>
+      <div class="hero-actions">
+        <a href="#contacto" class="btn btn-primary">Solicitar cotización
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a href="#servicios" class="btn btn-outline">Ver servicios</a>
+      </div>
+      <div class="hero-meta">
+        <div><div class="hm-num">10+</div><div class="hm-lbl">Clientes industriales</div></div>
+        <div><div class="hm-num">ISO</div><div class="hm-lbl">14224 · 55001</div></div>
+        <div><div class="hm-num">BV</div><div class="hm-lbl">Homologación B. Veritas</div></div>
+      </div>
+    </div>
 
-<!-- ══ STRIP NORMAS ══ -->
-<div class="norms-strip">
-  <div class="norms-inner">
-    <span class="norm-item"><b>ISO 14224</b> Taxonomía de equipos</span>
-    <span class="norm-item"><b>ISO 55001</b> Gestión de activos</span>
-    <span class="norm-item"><b>SAP PM</b> Estructura jerárquica</span>
-    <span class="norm-item"><b>P&ID</b> Diagramas de tubería e instrumentación</span>
-    <span class="norm-item"><b>LOTOTO</b> Seguridad operativa</span>
-    <span class="norm-item"><b>OSINERGMIN</b> Cumplimiento normativo</span>
-    <span class="norm-item"><b>ISO 14224</b> Taxonomía de equipos</span>
-    <span class="norm-item"><b>ISO 55001</b> Gestión de activos</span>
-    <span class="norm-item"><b>SAP PM</b> Estructura jerárquica</span>
-    <span class="norm-item"><b>P&ID</b> Diagramas de tubería e instrumentación</span>
-    <span class="norm-item"><b>LOTOTO</b> Seguridad operativa</span>
-    <span class="norm-item"><b>OSINERGMIN</b> Cumplimiento normativo</span>
+    <!-- Signature: schematic P&ID card -->
+    <div class="schematic" aria-hidden="true">
+      <div class="sch-top">
+        <span class="lbl">P&amp;ID · SALA DE MÁQUINAS</span>
+        <span class="rev mono">REV. 2026-A</span>
+      </div>
+      <div class="sch-body">
+        <svg viewBox="0 0 400 230" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path class="draw" d="M20 60 H120" stroke="#00929E" stroke-width="2"/>
+          <path class="draw d2" d="M180 60 H300 V150 H340" stroke="#00929E" stroke-width="2"/>
+          <path class="draw d3" d="M120 150 H240" stroke="#20323D" stroke-width="1.6" stroke-dasharray="5 4"/>
+          <circle cx="150" cy="60" r="30" stroke="#0C1922" stroke-width="2" fill="#F7FAFB"/>
+          <path d="M132 60 L162 46 V74 Z" fill="#00929E"/>
+          <rect x="90" y="120" width="60" height="60" rx="4" stroke="#0C1922" stroke-width="2" fill="#F7FAFB"/>
+          <path d="M90 138 H150 M90 156 H150" stroke="#C3D3DA" stroke-width="1.2"/>
+          <path d="M300 60 l14 -10 v20 z M300 60 l-14 -10 v20 z" fill="#E39A1C"/>
+          <circle cx="340" cy="150" r="20" stroke="#00929E" stroke-width="2" fill="#fff" class="pulse"/>
+          <text x="340" y="146" font-family="IBM Plex Mono" font-size="9" fill="#016B76" text-anchor="middle">PT</text>
+          <text x="340" y="158" font-family="IBM Plex Mono" font-size="9" fill="#016B76" text-anchor="middle">101</text>
+          <text x="150" y="106" font-family="IBM Plex Mono" font-size="9" fill="#5F7683" text-anchor="middle">P-201</text>
+          <text x="120" y="200" font-family="IBM Plex Mono" font-size="9" fill="#5F7683" text-anchor="middle">TK-05</text>
+          <path d="M20 30 v-8 M120 30 v-8 M20 26 H120" stroke="#8A9AA4" stroke-width="1"/>
+          <text x="70" y="18" font-family="IBM Plex Mono" font-size="8" fill="#8A9AA4" text-anchor="middle">DN-100</text>
+        </svg>
+      </div>
+      <div class="sch-foot">
+        <div><div class="sf-k">Norma</div><div class="sf-v">ISO 14224</div></div>
+        <div><div class="sf-k">Formato</div><div class="sf-v">SAP PM</div></div>
+        <div><div class="sf-k">Entregable</div><div class="sf-v">CAD + BD</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ TRUST BAR ═══ -->
+<div class="trust">
+  <div class="wrap trust-inner">
+    <span class="trust-lead">Estándares con los que trabajamos</span>
+    <div class="trust-items">
+      <span class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><b>ISO 14224</b> Taxonomía</span>
+      <span class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><b>ISO 55001</b> Activos</span>
+      <span class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><b>SAP PM</b> ERP</span>
+      <span class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><b>LOTOTO</b> Seguridad</span>
+    </div>
   </div>
 </div>
 
-<!-- ══ NOSOTROS ══ -->
-<section id="nosotros" class="grid-bg">
-  <div class="about-grid">
-    <div>
-      <p class="sec-tag">01 // Quiénes somos</p>
-      <h2 class="sec-title">PSIMAG <span class="hl">Industrial</span> S.A.C.</h2>
-      <p class="sec-desc">Empresa peruana especializada en soporte para la Gestión de Activos en la industria, con amplia experiencia en levantamiento de información técnica de maquinaria, sistemas de procesos y elaboración de documentación técnica de alto nivel.</p>
-
-      <div class="capability">
-        <div class="cap-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="14" rx="1"/><path d="M3 9h18M8 4v5M16 4v5M7 13h4M7 16h7"/></svg></div>
-        <div>
-          <div class="cap-title">Maquinaria y sistemas de planta</div>
-          <p class="cap-desc">Vapor, refrigeración, aire comprimido, agua, sistemas eléctricos, gas y plantas de tratamiento (PTAR).</p>
+<!-- ═══ NOSOTROS ═══ -->
+<section id="nosotros">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Quiénes somos</span>
+      <h2>Soporte técnico estratégico para la <span class="t">industria peruana</span></h2>
+      <p>Empresa especializada en Gestión de Activos, con amplia experiencia en levantamiento de información técnica de maquinaria, sistemas de procesos y documentación de ingeniería de alto nivel.</p>
+    </div>
+    <div class="about">
+      <div>
+        <div class="cap">
+          <div class="cap-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="4" width="18" height="15" rx="1.5"/><path d="M3 9h18M8 4v5M16 4v5M7 13h5M7 16h8"/></svg></div>
+          <div><h4>Maquinaria y sistemas de planta</h4><p>Vapor, refrigeración, aire comprimido, agua, sistemas eléctricos, gas y plantas de tratamiento (PTAR).</p></div>
+        </div>
+        <div class="cap">
+          <div class="cap-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3v18M4 7l8-4 8 4M4 7v10l8 4M20 7v10l-8 4"/></svg></div>
+          <div><h4>Taxonomía y codificación SAP</h4><p>Clasificación de equipos conforme a ISO 14224, estructura jerárquica y matrícula lista para SAP PM.</p></div>
+        </div>
+        <div class="cap">
+          <div class="cap-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 20l4-1L20 7l-3-3L5 16l-1 4zM14 6l4 4"/></svg></div>
+          <div><h4>Diseño técnico CAD</h4><p>P&ID, PFD, planos de repuestos, diagramas isométricos 3D, unifilares y planos de fabricación.</p></div>
+        </div>
+        <div class="cap">
+          <div class="cap-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6z"/><path d="M9 12l2 2 4-4"/></svg></div>
+          <div><h4>Seguridad industrial</h4><p>Documentación complementaria: procedimientos LOTOTO y elaboración de Mapas de Riesgo.</p></div>
         </div>
       </div>
-      <div class="capability">
-        <div class="cap-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3v18M5 7l7-4 7 4M5 7v10l7 4M19 7v10l-7 4"/></svg></div>
-        <div>
-          <div class="cap-title">Taxonomía y codificación SAP</div>
-          <p class="cap-desc">Clasificación de equipos conforme a ISO 14224, estructura jerárquica y matrícula para SAP PM.</p>
-        </div>
-      </div>
-      <div class="capability">
-        <div class="cap-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 21l6-6M14 4l6 6M10 8l6 6M4 20l4-1 12-12-3-3L5 16z"/></svg></div>
-        <div>
-          <div class="cap-title">Diseño técnico CAD</div>
-          <p class="cap-desc">P&ID, PFD, planos de repuestos, diagramas isométricos 3D, unifilares y planos de fabricación.</p>
-        </div>
-      </div>
-      <div class="capability" style="border-bottom:none;">
-        <div class="cap-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6z"/><path d="M9 12l2 2 4-4"/></svg></div>
-        <div>
-          <div class="cap-title">Seguridad industrial</div>
-          <p class="cap-desc">Documentación complementaria: procedimientos LOTOTO y Mapas de Riesgo.</p>
-        </div>
-      </div>
-    </div>
-
-    <div>
-      <div class="quote-panel">
-        <p>"Somos el soporte técnico estratégico para quienes gestionan <span>mantenimiento y confiabilidad</span> en la industria."</p>
-      </div>
-      <div class="cert-panel">
-        <span class="cert-flag">Verificado</span>
-        <h4>⬢ Homologación Bureau Veritas</h4>
-        <p>PSIMAG Industrial S.A.C. cuenta con Certificado de Homologación emitido por Bureau Veritas, cumpliendo los requisitos de evaluación de proveedores de ALICORP, con calificación A en los módulos de seguridad y salud ocupacional.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="hazard"></div>
-
-<!-- ══ SERVICIOS ══ -->
-<section id="servicios">
-  <p class="sec-tag">02 // Portafolio</p>
-  <h2 class="sec-title">Nuestros <span class="hl">servicios</span></h2>
-  <p class="sec-desc">Soluciones integrales de documentación técnica e ingeniería para plantas industriales.</p>
-
-  <div class="svc-grid">
-    <div class="svc-card" data-num="01">
-      <div class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg></div>
-      <div class="svc-title">Levantamiento de información técnica</div>
-      <p class="svc-desc">Inspección visual y fotográfica en campo. Registro de dimensiones, materiales y datos de placa de todos los equipos y sistemas de planta.</p>
-    </div>
-    <div class="svc-card" data-num="02">
-      <div class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 4h16v4H4zM4 10h16v4H4zM4 16h16v4H4z"/><circle cx="7" cy="6" r=".8" fill="currentColor"/><circle cx="7" cy="12" r=".8" fill="currentColor"/><circle cx="7" cy="18" r=".8" fill="currentColor"/></svg></div>
-      <div class="svc-title">Taxonomía y codificación SAP</div>
-      <p class="svc-desc">Clasificación de maquinaria bajo ISO 14224. Estructura jerárquica y matrícula de equipos lista para carga en SAP PM.</p>
-    </div>
-    <div class="svc-card" data-num="03">
-      <div class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 17l6-6 4 4 8-8M14 7h7v7"/></svg></div>
-      <div class="svc-title">Diseño técnico CAD</div>
-      <p class="svc-desc">Elaboración de P&ID, PFD, diagramas unifilares, layouts de planta, planos de repuestos e isométricos 3D.</p>
-    </div>
-    <div class="svc-card" data-num="04">
-      <div class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v6c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 11v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></svg></div>
-      <div class="svc-title">Base de datos de activos y repuestos</div>
-      <p class="svc-desc">Bases de datos centralizadas de motores, bombas, reductores y válvulas. Inventario de repuestos críticos compatible con SAP.</p>
-    </div>
-    <div class="svc-card" data-num="05">
-      <div class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 3h10l4 4v14H3V3h4zM8 12h8M8 16h5M14 3v5h7"/></svg></div>
-      <div class="svc-title">Fichas técnicas de equipos</div>
-      <p class="svc-desc">Fichas completas mecánicas y eléctricas, con historial de mantenimiento y datos de componentes del fabricante.</p>
-    </div>
-    <div class="svc-card" data-num="06">
-      <div class="svc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3L3 8v13h18V8zM3 8l9 5 9-5M12 13v8"/></svg></div>
-      <div class="svc-title">Diseño estructural y simulaciones</div>
-      <p class="svc-desc">Estructuras metálicas con simulación de cargas. Planos de fabricación para reposición local de componentes críticos.</p>
-    </div>
-  </div>
-</section>
-
-<div class="hazard"></div>
-
-<!-- ══ BENEFICIOS ══ -->
-<section id="beneficios" class="grid-bg">
-  <p class="sec-tag">03 // Valor para su operación</p>
-  <h2 class="sec-title">Beneficios <span class="hl">medibles</span></h2>
-  <p class="sec-desc">Documentación técnica precisa que reduce tiempos muertos, mejora la planificación y fortalece la confiabilidad operativa.</p>
-
-  <div class="ben-grid">
-    <div class="ben-card">
-      <div class="ben-metric">DOC-CTRL</div>
-      <div class="ben-title">Optimización documental</div>
-      <p class="ben-desc">Acceso centralizado, confiable y actualizado a planos y bases de datos. Sin duplicidad, con consulta rápida para todo el equipo.</p>
-    </div>
-    <div class="ben-card">
-      <div class="ben-metric">MTTF · MTTR · MTBF</div>
-      <div class="ben-title">Mejor planificación</div>
-      <p class="ben-desc">Reducción de tiempos muertos y mejora de indicadores de confiabilidad gracias a repuestos correctamente identificados.</p>
-    </div>
-    <div class="ben-card">
-      <div class="ben-metric">SAP-MM</div>
-      <div class="ben-title">Inventarios eficientes</div>
-      <p class="ben-desc">Repuestos críticos claramente identificados: pedidos, control y seguimiento vía ERP con costos y tiempos optimizados.</p>
-    </div>
-    <div class="ben-card">
-      <div class="ben-metric">REG-PE</div>
-      <div class="ben-title">Cumplimiento normativo</div>
-      <p class="ben-desc">Documentación lista para auditorías de OSINERGMIN, Defensa Civil, seguridad industrial y protección ambiental.</p>
-    </div>
-    <div class="ben-card">
-      <div class="ben-metric">UPTIME</div>
-      <div class="ben-title">Confiabilidad operativa</div>
-      <p class="ben-desc">Menos paradas imprevistas: decisiones rápidas y acertadas con información técnica precisa al alcance del equipo.</p>
-    </div>
-    <div class="ben-card">
-      <div class="ben-metric">LOTOTO</div>
-      <div class="ben-title">Seguridad operativa</div>
-      <p class="ben-desc">Puntos críticos identificados (válvulas, sensores, control). Planes de contingencia y procedimientos documentados.</p>
-    </div>
-  </div>
-</section>
-
-<div class="hazard"></div>
-
-<!-- ══ METODOLOGÍA ══ -->
-<section id="metodologia">
-  <p class="sec-tag">04 // Cómo trabajamos</p>
-  <h2 class="sec-title">Metodología en <span class="hl">4 etapas</span></h2>
-  <p class="sec-desc">Proceso estructurado que garantiza entregables de calidad, alineados a las necesidades de su planta.</p>
-
-  <div class="steps">
-    <div class="step">
-      <span class="step-idx">FASE 01</span>
-      <h4>Planificación y preparación</h4>
-      <p>Revisión de documentación existente, coordinación de accesos y permisos, preparación de herramientas y definición de equipos de trabajo.</p>
-    </div>
-    <div class="step">
-      <span class="step-idx">FASE 02</span>
-      <h4>Relevamiento en campo</h4>
-      <p>Inspección visual y fotográfica, registro de dimensiones y materiales, esquemas preliminares y validación de datos en sitio.</p>
-    </div>
-    <div class="step">
-      <span class="step-idx">FASE 03</span>
-      <h4>Procesamiento y análisis</h4>
-      <p>Creación de bases de datos, elaboración de PFD y P&ID, generación de fichas técnicas y organización en repositorios.</p>
-    </div>
-    <div class="step">
-      <span class="step-idx">FASE 04</span>
-      <h4>Validación y entrega</h4>
-      <p>Revisión interna de documentos, presentación al cliente, entrega final consolidada y sesión de cierre con el equipo.</p>
-    </div>
-  </div>
-</section>
-
-<div class="hazard"></div>
-
-<!-- ══ CLIENTES ══ -->
-<section id="clientes" class="grid-bg">
-  <p class="sec-tag">05 // Confían en nosotros</p>
-  <h2 class="sec-title">Clientes <span class="hl">industriales</span></h2>
-  <p class="sec-desc">Líderes de la industria alimentaria, acuícola, textil y de manufactura en el Perú.</p>
-
-  <div class="logo-grid">
-    <div class="logo-cell"><img src="logos/alicorp.png" alt="Alicorp" onerror="this.outerHTML='<span class=logo-fallback>Alicorp</span>'"></div>
-    <div class="logo-cell"><img src="logos/vitapro.png" alt="Vitapro S.A." onerror="this.outerHTML='<span class=logo-fallback>Vitapro S.A.</span>'"></div>
-    <div class="logo-cell"><img src="logos/arca-lindley.png" alt="Arca Continental Lindley" onerror="this.outerHTML='<span class=logo-fallback>Arca Continental Lindley</span>'"></div>
-    <div class="logo-cell"><img src="logos/bimbo.png" alt="Bimbo" onerror="this.outerHTML='<span class=logo-fallback>Bimbo</span>'"></div>
-    <div class="logo-cell"><img src="logos/nestle.png" alt="Nestlé" onerror="this.outerHTML='<span class=logo-fallback>Nestlé</span>'"></div>
-    <div class="logo-cell"><img src="logos/kaeser.png" alt="Kaeser Compresores" onerror="this.outerHTML='<span class=logo-fallback>Kaeser Compresores</span>'"></div>
-    <div class="logo-cell"><img src="logos/mepsa.png" alt="MEPSA" onerror="this.outerHTML='<span class=logo-fallback>MEPSA</span>'"></div>
-    <div class="logo-cell"><img src="logos/naltech.png" alt="Naltech" onerror="this.outerHTML='<span class=logo-fallback>Naltech</span>'"></div>
-    <div class="logo-cell"><img src="logos/morken.png" alt="Morken Group" onerror="this.outerHTML='<span class=logo-fallback>Morken Group</span>'"></div>
-    <div class="logo-cell"><img src="logos/textil-amazonas.png" alt="Textil El Amazonas" onerror="this.outerHTML='<span class=logo-fallback>Textil El Amazonas</span>'"></div>
-    <div class="logo-cell"><img src="logos/qroma.png" alt="QROMA" onerror="this.outerHTML='<span class=logo-fallback>QROMA</span>'"></div>
-  </div>
-</section>
-
-<div class="hazard"></div>
-
-<!-- ══ CONTACTO ══ -->
-<section id="contacto">
-  <p class="sec-tag">06 // Contacto</p>
-  <h2 class="sec-title">Hablemos de su <span class="hl">proyecto</span></h2>
-  <p class="sec-desc">Cuéntenos qué necesita documentar o levantar en su planta. Respondemos en menos de 24 horas.</p>
-
-  <div class="contact-grid">
-    <div>
-      <div class="c-item">
-        <div class="c-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6 8-6s8 2 8 6"/></svg></div>
-        <div>
-          <div class="c-label">Contacto principal</div>
-          <div class="c-val"><strong>Elvis Nilton Gonzales Blas</strong><br>Gerente General</div>
-        </div>
-      </div>
-      <div class="c-item">
-        <div class="c-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 4h4l2 5-2.5 1.5a12 12 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z"/></svg></div>
-        <div>
-          <div class="c-label">Teléfono / WhatsApp</div>
-          <div class="c-val"><a href="tel:+51994962807">+51 994 962 807</a></div>
-        </div>
-      </div>
-      <div class="c-item">
-        <div class="c-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M3 7l9 6 9-6"/></svg></div>
-        <div>
-          <div class="c-label">Correo electrónico</div>
-          <div class="c-val">
-            <a href="mailto:elvis.gonzales@psimag-industrial.com">elvis.gonzales@psimag-industrial.com</a><br>
-            <a href="mailto:psimag.elvisgonzales@gmail.com">psimag.elvisgonzales@gmail.com</a>
+      <div>
+        <div class="quote"><p>Somos el soporte técnico estratégico para quienes gestionan <span>mantenimiento y confiabilidad</span> en la industria.</p></div>
+        <div class="cert">
+          <div class="cert-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6z"/><path d="M9 12l2 2 4-4"/></svg></div>
+          <div>
+            <h4>Homologación Bureau Veritas</h4>
+            <p>Certificado emitido por Bureau Veritas cumpliendo los requisitos de evaluación de proveedores de ALICORP, con calificación A en los módulos de seguridad y salud ocupacional.</p>
           </div>
         </div>
       </div>
-      <div class="c-item" style="border-bottom:none;">
-        <div class="c-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s7-6 7-11a7 7 0 10-14 0c0 5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
-        <div>
-          <div class="c-label">Dirección</div>
-          <div class="c-val">P.J. Daniel A. Carrión, Calle 38 Mz.P Lt.4<br>San Martín de Porres — Lima, Perú<br><span style="font-family:'Roboto Mono',monospace;font-size:.7rem;color:var(--grey-dk);">RUC 20563572460</span></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="form-panel">
-      <span class="corner c-tl"></span><span class="corner c-tr"></span>
-      <span class="corner c-bl"></span><span class="corner c-br"></span>
-      <form onsubmit="event.preventDefault(); alert('Gracias. Nos pondremos en contacto en menos de 24 horas.');">
-        <div class="f-row">
-          <input type="text" placeholder="Nombre" required>
-          <input type="text" placeholder="Empresa" required>
-        </div>
-        <div class="f-row">
-          <input type="email" placeholder="Correo electrónico" required>
-          <input type="tel" placeholder="Teléfono">
-        </div>
-        <input type="text" placeholder="Asunto — ej. Levantamiento P&ID sala de máquinas">
-        <textarea placeholder="Describa su proyecto: tipo de industria, sistemas o equipos que necesita documentar..."></textarea>
-        <button type="submit">Enviar consulta ▸</button>
-      </form>
     </div>
   </div>
 </section>
 
-<!-- ══ FOOTER ══ -->
+<!-- ═══ SERVICIOS ═══ -->
+<section id="servicios" class="svc-section">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Portafolio</span>
+      <h2>Servicios de <span class="t">ingeniería y documentación</span></h2>
+      <p>Soluciones integrales de documentación técnica para plantas industriales, de campo a base de datos.</p>
+    </div>
+    <div class="svc-grid">
+      <div class="svc">
+        <span class="svc-n">/ 01</span>
+        <div class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg></div>
+        <h3>Levantamiento de información</h3>
+        <p>Inspección visual y fotográfica en campo. Registro de dimensiones, materiales y datos de placa de todos los equipos de planta.</p>
+      </div>
+      <div class="svc">
+        <span class="svc-n">/ 02</span>
+        <div class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="4" y="4" width="16" height="4" rx="1"/><rect x="4" y="10" width="16" height="4" rx="1"/><rect x="4" y="16" width="16" height="4" rx="1"/></svg></div>
+        <h3>Taxonomía y codificación SAP</h3>
+        <p>Clasificación de maquinaria bajo ISO 14224. Estructura jerárquica y matrícula de equipos lista para carga en SAP PM.</p>
+      </div>
+      <div class="svc">
+        <span class="svc-n">/ 03</span>
+        <div class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 17l6-6 4 4 8-8M15 7h6v6"/></svg></div>
+        <h3>Diseño técnico CAD</h3>
+        <p>Elaboración de P&ID, PFD, diagramas unifilares, layouts de planta, planos de repuestos e isométricos 3D.</p>
+      </div>
+      <div class="svc">
+        <span class="svc-n">/ 04</span>
+        <div class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg></div>
+        <h3>Base de datos de activos y repuestos</h3>
+        <p>Bases centralizadas de motores, bombas, reductores y válvulas. Inventario de repuestos críticos compatible con SAP.</p>
+      </div>
+      <div class="svc">
+        <span class="svc-n">/ 05</span>
+        <div class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 3H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V8zM14 3v5h5M9 13h6M9 16h4"/></svg></div>
+        <h3>Fichas técnicas de equipos</h3>
+        <p>Fichas mecánicas y eléctricas completas, con historial de mantenimiento y datos de componentes del fabricante.</p>
+      </div>
+      <div class="svc">
+        <span class="svc-n">/ 06</span>
+        <div class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3L3 8v8l9 5 9-5V8zM3 8l9 5 9-5M12 13v8"/></svg></div>
+        <h3>Diseño estructural y simulaciones</h3>
+        <p>Estructuras metálicas con simulación de cargas. Planos de fabricación para reposición local de componentes críticos.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ BENEFICIOS ═══ -->
+<section id="beneficios">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Valor para su operación</span>
+      <h2>Resultados <span class="t">medibles</span> en planta</h2>
+      <p>Documentación precisa que reduce tiempos muertos, mejora la planificación y fortalece la confiabilidad operativa.</p>
+    </div>
+    <div class="ben-grid">
+      <div class="ben"><span class="ben-tag">Doc. Control</span><h3>Optimización documental</h3><p>Acceso centralizado, confiable y actualizado a planos y bases de datos, sin duplicidad y con consulta rápida para todo el equipo.</p></div>
+      <div class="ben"><span class="ben-tag">MTTF · MTTR · MTBF</span><h3>Mejor planificación</h3><p>Reducción de tiempos muertos y mejora de indicadores de confiabilidad gracias a repuestos correctamente identificados.</p></div>
+      <div class="ben"><span class="ben-tag">SAP · MM</span><h3>Inventarios eficientes</h3><p>Repuestos críticos identificados con claridad: pedidos, control y seguimiento vía ERP, con costos y tiempos optimizados.</p></div>
+      <div class="ben"><span class="ben-tag">Regulación PE</span><h3>Cumplimiento normativo</h3><p>Documentación lista para auditorías de OSINERGMIN, Defensa Civil, seguridad industrial y protección ambiental.</p></div>
+      <div class="ben"><span class="ben-tag">Uptime</span><h3>Confiabilidad operativa</h3><p>Menos paradas imprevistas: decisiones rápidas y acertadas con información técnica precisa al alcance del equipo.</p></div>
+      <div class="ben"><span class="ben-tag">LOTOTO</span><h3>Seguridad operativa</h3><p>Puntos críticos identificados (válvulas, sensores, control), con planes de contingencia y procedimientos documentados.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ METODOLOGÍA ═══ -->
+<section id="metodologia" class="method-section">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Cómo trabajamos</span>
+      <h2>Un proceso en <span class="t">cuatro etapas</span></h2>
+      <p>Método estructurado que garantiza entregables de calidad, alineados a las necesidades de su planta.</p>
+    </div>
+    <div class="steps">
+      <div class="step"><span class="step-n">1</span><h4>Planificación</h4><p>Revisión de documentación existente, coordinación de accesos y permisos, preparación de herramientas y definición de equipos de trabajo.</p></div>
+      <div class="step"><span class="step-n">2</span><h4>Relevamiento en campo</h4><p>Inspección visual y fotográfica, registro de dimensiones y materiales, esquemas preliminares y validación de datos en sitio.</p></div>
+      <div class="step"><span class="step-n">3</span><h4>Procesamiento</h4><p>Creación de bases de datos, elaboración de PFD y P&ID, generación de fichas técnicas y organización en repositorios.</p></div>
+      <div class="step"><span class="step-n">4</span><h4>Validación y entrega</h4><p>Revisión interna, presentación al cliente, entrega final consolidada y sesión de cierre con el equipo.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CLIENTES ═══ -->
+<section id="clientes" class="clients-section">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Confían en nosotros</span>
+      <h2>Clientes <span class="t">industriales</span></h2>
+      <p>Líderes de la industria alimentaria, acuícola, textil y de manufactura en el Perú.</p>
+    </div>
+    <div class="logo-wall">
+      <div class="logo-tile"><img src="logos/alicorp.png" alt="Alicorp" onerror="this.outerHTML='&lt;div class=wm style=color:#E4022B&gt;Alicorp&lt;/div&gt;'"></div>
+      <div class="logo-tile"><img src="logos/vitapro.png" alt="Vitapro" onerror="this.outerHTML='&lt;div class=wm style=color:#0097A9&gt;Vitapro&lt;small&gt;S.A.&lt;/small&gt;&lt;/div&gt;'"></div>
+      <div class="logo-tile"><img src="logos/arca-lindley.png" alt="Arca Continental Lindley" onerror="this.outerHTML='&lt;div class=wm style=color:#D8232A;font-size:1.15rem&gt;Arca Continental&lt;small&gt;Lindley&lt;/small&gt;&lt;/div&gt;'"></div>
+      <div class="logo-tile"><img src="logos/bimbo.png" alt="Bimbo" onerror="this.outerHTML='&lt;div class=wm style=color:#004B93&gt;Bimbo&lt;/div&gt;'"></div>
+      <div class="logo-tile"><img src="logos/nestle.png" alt="Nestlé" onerror="this.outerHTML='&lt;div class=wm style=color:#231F20&gt;Nestl&eacute;&lt;/div&gt;'"></div>
+      <div class="logo-tile"><img src="logos/kaeser.png" alt="Kaeser Compresores" onerror="this.outerHTML='&lt;div class=wm style=color:#1A1A1A;font-size:1.3rem&gt;KAESER&lt;small&gt;Compresores&lt;/small&gt;&lt;/div&gt;'"></div>
+      <div class="logo-tile"><img src="logos/mepsa.png" alt="MEPSA" onerror="this.outerHTML='&lt;div class=wm style=color:#00447C&gt;MEPSA&lt;/div&gt;'"></div>
+      <div class="logo-tile"><img src="logos/naltech.png" alt="Naltech" onerror="this.outerHTML='&lt;div class=wm style=color:#009444&gt;Naltech&lt;/div&gt;'"></div>
+      <div class="logo-tile"><img src="logos/morken.png" alt="Morken Group" onerror="this.outerHTML='&lt;div class=wm style=color:#003F6B&gt;Morken&lt;small&gt;Group&lt;/small&gt;&lt;/div&gt;'"></div>
+      <div class="logo-tile"><img src="logos/textil-amazonas.png" alt="Textil El Amazonas" onerror="this.outerHTML='&lt;div class=wm style=color:#1E7A3D;font-size:1.1rem&gt;Textil&lt;small&gt;El Amazonas&lt;/small&gt;&lt;/div&gt;'"></div>
+      <div class="logo-tile"><img src="logos/qroma.png" alt="QROMA" onerror="this.outerHTML='&lt;div class=wm style=color:#E4002B&gt;QROMA&lt;/div&gt;'"></div>
+      <div class="logo-tile" style="border-style:dashed;background:var(--paper);"><div class="wm" style="color:var(--muted-2);font-size:.9rem;font-weight:600;">+ su empresa</div></div>
+    </div>
+    <p class="clients-note">Los nombres corresponden a empresas atendidas · Reemplace cada tile con el logo oficial en /logos/</p>
+  </div>
+</section>
+
+<!-- ═══ CONTACTO ═══ -->
+<section id="contacto">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Contacto</span>
+      <h2>Hablemos de su <span class="t">proyecto</span></h2>
+      <p>Cuéntenos qué necesita levantar o documentar en su planta. Respondemos en menos de 24 horas.</p>
+    </div>
+    <div class="contact-grid">
+      <div>
+        <div class="c-item">
+          <div class="c-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6 8-6s8 2 8 6"/></svg></div>
+          <div><div class="c-k">Contacto</div><div class="c-v"><strong>Elvis Nilton Gonzales Blas</strong><br>Gerente General</div></div>
+        </div>
+        <div class="c-item">
+          <div class="c-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 4h4l2 5-2.5 1.5a12 12 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z"/></svg></div>
+          <div><div class="c-k">Teléfono / WhatsApp</div><div class="c-v"><a href="tel:+51994962807">+51 994 962 807</a></div></div>
+        </div>
+        <div class="c-item">
+          <div class="c-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="M3 7l9 6 9-6"/></svg></div>
+          <div><div class="c-k">Correo</div><div class="c-v"><a href="mailto:elvis.gonzales@psimag-industrial.com">elvis.gonzales@psimag-industrial.com</a></div></div>
+        </div>
+        <div class="c-item">
+          <div class="c-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 21s7-6 7-11a7 7 0 10-14 0c0 5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
+          <div><div class="c-k">Dirección</div><div class="c-v">P.J. Daniel A. Carrión, Calle 38 Mz.P Lt.4<br>San Martín de Porres — Lima, Perú<br><span class="mono" style="font-size:.76rem;color:var(--muted-2);">RUC 20563572460</span></div></div>
+        </div>
+      </div>
+      <div class="form">
+        <h3>Solicite una cotización</h3>
+        <p class="sub">Sin compromiso. Le respondemos con un alcance y estimación inicial.</p>
+        <form onsubmit="event.preventDefault();this.querySelector('button').textContent='✓ Enviado — gracias';">
+          <div class="f2">
+            <div><label>Nombre</label><input type="text" required></div>
+            <div><label>Empresa</label><input type="text" required></div>
+          </div>
+          <div class="f2">
+            <div><label>Correo</label><input type="email" required></div>
+            <div><label>Teléfono</label><input type="tel"></div>
+          </div>
+          <div><label>Asunto</label><input type="text" placeholder="Ej. Levantamiento P&ID sala de máquinas"></div>
+          <div><label>Mensaje</label><textarea placeholder="Describa su proyecto: industria, sistemas o equipos que necesita documentar..."></textarea></div>
+          <button type="submit" class="btn btn-primary">Enviar consulta</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
 <footer>
-  <div class="foot-brand">PSIMAG <span>INDUSTRIAL</span> S.A.C.</div>
-  <div class="foot-meta">
-    PROYECTOS · DISEÑO · FABRICACIÓN · MANTENIMIENTO<br>
-    RUC 20563572460 — LIMA, PERÚ — HOMOLOGADO BUREAU VERITAS
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="1" y="1" width="38" height="38" rx="7" fill="#122430" stroke="#00929E" stroke-width="1"/>
+          <path d="M13 11v18M13 20h10M23 11v18" stroke="#00929E" stroke-width="2.6" stroke-linecap="round"/>
+          <circle cx="28" cy="14" r="2.4" fill="#00929E"/>
+        </svg>
+        <div class="brand-name" style="color:#fff;">PSIMAG<small style="color:var(--teal);">INDUSTRIAL S.A.C.</small></div>
+        <p>Proyectos, diseño, fabricación y mantenimiento. Soporte técnico estratégico para la gestión de activos en la industria peruana.</p>
+      </div>
+      <div class="foot-col">
+        <h5>Navegación</h5>
+        <a href="#nosotros">Nosotros</a>
+        <a href="#servicios">Servicios</a>
+        <a href="#beneficios">Beneficios</a>
+        <a href="#metodologia">Metodología</a>
+        <a href="#clientes">Clientes</a>
+      </div>
+      <div class="foot-col">
+        <h5>Contacto</h5>
+        <a href="tel:+51994962807">+51 994 962 807</a>
+        <a href="mailto:elvis.gonzales@psimag-industrial.com">Correo electrónico</a>
+        <a href="#contacto">Cotizar proyecto</a>
+        <span style="color:#9FB2BC;font-size:.88rem;">Lima, Perú</span>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <span>© 2026 PSIMAG INDUSTRIAL S.A.C. · RUC 20563572460</span>
+      <span>HOMOLOGADO BUREAU VERITAS · ISO 14224 · ISO 55001</span>
+    </div>
   </div>
 </footer>
 
